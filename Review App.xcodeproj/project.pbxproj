@@ -11,6 +11,22 @@
 		5943177F29A389AC007A28EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943177E29A389AC007A28EC /* ContentView.swift */; };
 		5943178129A389B3007A28EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5943178029A389B3007A28EC /* Assets.xcassets */; };
 		5943178429A389B3007A28EC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5943178329A389B3007A28EC /* Preview Assets.xcassets */; };
+		5943178D29A389DC007A28EC /* cera_pro_regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5943178B29A389DC007A28EC /* cera_pro_regular.otf */; };
+		5943178E29A389DC007A28EC /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943178C29A389DC007A28EC /* AppFonts.swift */; };
+		5943179729A389EB007A28EC /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943179029A389EA007A28EC /* AppColors.swift */; };
+		5943179829A389EB007A28EC /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943179129A389EA007A28EC /* AppImages.swift */; };
+		5943179929A389EB007A28EC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943179229A389EA007A28EC /* ImagePicker.swift */; };
+		5943179A29A389EB007A28EC /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943179329A389EA007A28EC /* Shimmer.swift */; };
+		5943179B29A389EB007A28EC /* SeekBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943179429A389EA007A28EC /* SeekBar.swift */; };
+		5943179C29A389EB007A28EC /* PinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943179529A389EA007A28EC /* PinkButton.swift */; };
+		5943179D29A389EB007A28EC /* ImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943179629A389EA007A28EC /* ImageViewer.swift */; };
+		594317A029A38A5E007A28EC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5943179F29A38A5E007A28EC /* Kingfisher */; };
+		594317A329A38A8F007A28EC /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 594317A229A38A8F007A28EC /* Shimmer */; };
+		594317A629A38BEE007A28EC /* SignupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594317A529A38BEE007A28EC /* SignupScreen.swift */; };
+		594317A829A394BB007A28EC /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594317A729A394BB007A28EC /* LoginScreen.swift */; };
+		594317AA29A39628007A28EC /* LoginSwicher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594317A929A39628007A28EC /* LoginSwicher.swift */; };
+		594317AC29A398C9007A28EC /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594317AB29A398C9007A28EC /* ForgotPasswordScreen.swift */; };
+		5943C21B29A3A24B00586DE0 /* VerifyOTPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943C21A29A3A24B00586DE0 /* VerifyOTPScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +35,20 @@
 		5943177E29A389AC007A28EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5943178029A389B3007A28EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5943178329A389B3007A28EC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5943178B29A389DC007A28EC /* cera_pro_regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = cera_pro_regular.otf; sourceTree = "<group>"; };
+		5943178C29A389DC007A28EC /* AppFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
+		5943179029A389EA007A28EC /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		5943179129A389EA007A28EC /* AppImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
+		5943179229A389EA007A28EC /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		5943179329A389EA007A28EC /* Shimmer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
+		5943179429A389EA007A28EC /* SeekBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeekBar.swift; sourceTree = "<group>"; };
+		5943179529A389EA007A28EC /* PinkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinkButton.swift; sourceTree = "<group>"; };
+		5943179629A389EA007A28EC /* ImageViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewer.swift; sourceTree = "<group>"; };
+		594317A529A38BEE007A28EC /* SignupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreen.swift; sourceTree = "<group>"; };
+		594317A729A394BB007A28EC /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		594317A929A39628007A28EC /* LoginSwicher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSwicher.swift; sourceTree = "<group>"; };
+		594317AB29A398C9007A28EC /* ForgotPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordScreen.swift; sourceTree = "<group>"; };
+		5943C21A29A3A24B00586DE0 /* VerifyOTPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				594317A329A38A8F007A28EC /* Shimmer in Frameworks */,
+				594317A029A38A5E007A28EC /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +83,9 @@
 		5943177B29A389AC007A28EC /* Review App */ = {
 			isa = PBXGroup;
 			children = (
+				594317A429A38BA7007A28EC /* Screens */,
+				5943178F29A389EA007A28EC /* Resources */,
+				5943178A29A389DC007A28EC /* Fonts */,
 				5943177C29A389AC007A28EC /* Review_AppApp.swift */,
 				5943177E29A389AC007A28EC /* ContentView.swift */,
 				5943178029A389B3007A28EC /* Assets.xcassets */,
@@ -65,6 +100,41 @@
 				5943178329A389B3007A28EC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5943178A29A389DC007A28EC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5943178B29A389DC007A28EC /* cera_pro_regular.otf */,
+				5943178C29A389DC007A28EC /* AppFonts.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		5943178F29A389EA007A28EC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5943179029A389EA007A28EC /* AppColors.swift */,
+				5943179129A389EA007A28EC /* AppImages.swift */,
+				5943179229A389EA007A28EC /* ImagePicker.swift */,
+				5943179329A389EA007A28EC /* Shimmer.swift */,
+				5943179429A389EA007A28EC /* SeekBar.swift */,
+				5943179529A389EA007A28EC /* PinkButton.swift */,
+				5943179629A389EA007A28EC /* ImageViewer.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		594317A429A38BA7007A28EC /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				594317A529A38BEE007A28EC /* SignupScreen.swift */,
+				594317A729A394BB007A28EC /* LoginScreen.swift */,
+				594317A929A39628007A28EC /* LoginSwicher.swift */,
+				594317AB29A398C9007A28EC /* ForgotPasswordScreen.swift */,
+				5943C21A29A3A24B00586DE0 /* VerifyOTPScreen.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +153,10 @@
 			dependencies = (
 			);
 			name = "Review App";
+			packageProductDependencies = (
+				5943179F29A38A5E007A28EC /* Kingfisher */,
+				594317A229A38A8F007A28EC /* Shimmer */,
+			);
 			productName = "Review App";
 			productReference = 5943177929A389AC007A28EC /* Review App.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +185,10 @@
 				Base,
 			);
 			mainGroup = 5943177029A389AC007A28EC;
+			packageReferences = (
+				5943179E29A38A5E007A28EC /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				594317A129A38A8F007A28EC /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+			);
 			productRefGroup = 5943177A29A389AC007A28EC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5943178429A389B3007A28EC /* Preview Assets.xcassets in Resources */,
+				5943178D29A389DC007A28EC /* cera_pro_regular.otf in Resources */,
 				5943178129A389B3007A28EC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +216,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5943178E29A389DC007A28EC /* AppFonts.swift in Sources */,
+				594317AC29A398C9007A28EC /* ForgotPasswordScreen.swift in Sources */,
+				5943179729A389EB007A28EC /* AppColors.swift in Sources */,
+				594317A629A38BEE007A28EC /* SignupScreen.swift in Sources */,
 				5943177F29A389AC007A28EC /* ContentView.swift in Sources */,
+				5943179D29A389EB007A28EC /* ImageViewer.swift in Sources */,
+				594317AA29A39628007A28EC /* LoginSwicher.swift in Sources */,
+				594317A829A394BB007A28EC /* LoginScreen.swift in Sources */,
+				5943179A29A389EB007A28EC /* Shimmer.swift in Sources */,
+				5943179929A389EB007A28EC /* ImagePicker.swift in Sources */,
+				5943179C29A389EB007A28EC /* PinkButton.swift in Sources */,
+				5943179B29A389EB007A28EC /* SeekBar.swift in Sources */,
+				5943179829A389EB007A28EC /* AppImages.swift in Sources */,
 				5943177D29A389AC007A28EC /* Review_AppApp.swift in Sources */,
+				5943C21B29A3A24B00586DE0 /* VerifyOTPScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +429,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5943179E29A38A5E007A28EC /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		594317A129A38A8F007A28EC /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5943179F29A38A5E007A28EC /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5943179E29A38A5E007A28EC /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		594317A229A38A8F007A28EC /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 594317A129A38A8F007A28EC /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5943177129A389AC007A28EC /* Project object */;
 }
