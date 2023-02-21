@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59109B3329A4E58C007D328A /* UserProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59109B3229A4E58C007D328A /* UserProfileScreen.swift */; };
 		5943177D29A389AC007A28EC /* Review_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943177C29A389AC007A28EC /* Review_AppApp.swift */; };
 		5943177F29A389AC007A28EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943177E29A389AC007A28EC /* ContentView.swift */; };
 		5943178129A389B3007A28EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5943178029A389B3007A28EC /* Assets.xcassets */; };
@@ -29,9 +30,13 @@
 		5943C21B29A3A24B00586DE0 /* VerifyOTPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943C21A29A3A24B00586DE0 /* VerifyOTPScreen.swift */; };
 		597BE87F29A49B5400E014ED /* CreateProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597BE87E29A49B5400E014ED /* CreateProfileScreen.swift */; };
 		597BE88129A4C69000E014ED /* EditProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597BE88029A4C69000E014ED /* EditProfileScreen.swift */; };
+		597BE88329A4CE1600E014ED /* MyProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597BE88229A4CE1600E014ED /* MyProfileScreen.swift */; };
+		597BE88529A4D9B200E014ED /* MainTabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597BE88429A4D9B200E014ED /* MainTabContainer.swift */; };
+		597BE88729A4DBBF00E014ED /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597BE88629A4DBBE00E014ED /* HomeScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		59109B3229A4E58C007D328A /* UserProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileScreen.swift; sourceTree = "<group>"; };
 		5943177929A389AC007A28EC /* Review App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Review App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5943177C29A389AC007A28EC /* Review_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review_AppApp.swift; sourceTree = "<group>"; };
 		5943177E29A389AC007A28EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +58,9 @@
 		5943C21A29A3A24B00586DE0 /* VerifyOTPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPScreen.swift; sourceTree = "<group>"; };
 		597BE87E29A49B5400E014ED /* CreateProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileScreen.swift; sourceTree = "<group>"; };
 		597BE88029A4C69000E014ED /* EditProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileScreen.swift; sourceTree = "<group>"; };
+		597BE88229A4CE1600E014ED /* MyProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileScreen.swift; sourceTree = "<group>"; };
+		597BE88429A4D9B200E014ED /* MainTabContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabContainer.swift; sourceTree = "<group>"; };
+		597BE88629A4DBBE00E014ED /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +147,10 @@
 				5943C21A29A3A24B00586DE0 /* VerifyOTPScreen.swift */,
 				597BE87E29A49B5400E014ED /* CreateProfileScreen.swift */,
 				597BE88029A4C69000E014ED /* EditProfileScreen.swift */,
+				597BE88229A4CE1600E014ED /* MyProfileScreen.swift */,
+				597BE88429A4D9B200E014ED /* MainTabContainer.swift */,
+				597BE88629A4DBBE00E014ED /* HomeScreen.swift */,
+				59109B3229A4E58C007D328A /* UserProfileScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -222,20 +234,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59109B3329A4E58C007D328A /* UserProfileScreen.swift in Sources */,
 				5943178E29A389DC007A28EC /* AppFonts.swift in Sources */,
 				594317AC29A398C9007A28EC /* ForgotPasswordScreen.swift in Sources */,
 				5943179729A389EB007A28EC /* AppColors.swift in Sources */,
 				594317A629A38BEE007A28EC /* SignupScreen.swift in Sources */,
+				597BE88529A4D9B200E014ED /* MainTabContainer.swift in Sources */,
 				5943177F29A389AC007A28EC /* ContentView.swift in Sources */,
 				597BE88129A4C69000E014ED /* EditProfileScreen.swift in Sources */,
 				5943179D29A389EB007A28EC /* ImageViewer.swift in Sources */,
 				594317AA29A39628007A28EC /* LoginSwicher.swift in Sources */,
 				594317A829A394BB007A28EC /* LoginScreen.swift in Sources */,
+				597BE88329A4CE1600E014ED /* MyProfileScreen.swift in Sources */,
 				5943179A29A389EB007A28EC /* Shimmer.swift in Sources */,
 				597BE87F29A49B5400E014ED /* CreateProfileScreen.swift in Sources */,
 				5943179929A389EB007A28EC /* ImagePicker.swift in Sources */,
 				5943179C29A389EB007A28EC /* PinkButton.swift in Sources */,
 				5943179B29A389EB007A28EC /* SeekBar.swift in Sources */,
+				597BE88729A4DBBF00E014ED /* HomeScreen.swift in Sources */,
 				5943179829A389EB007A28EC /* AppImages.swift in Sources */,
 				5943177D29A389AC007A28EC /* Review_AppApp.swift in Sources */,
 				5943C21B29A3A24B00586DE0 /* VerifyOTPScreen.swift in Sources */,

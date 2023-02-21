@@ -197,7 +197,7 @@ struct CreateProfileScreen: View {
                       
                         
                         NavigationLink(destination: {
-                            EditProfileScreen()
+                            MainTabContainer()
                         }, label: {
                             BlueButton(lable: "Create Profile")
                                 .padding(.top,20)
