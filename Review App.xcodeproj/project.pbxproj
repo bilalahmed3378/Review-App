@@ -27,6 +27,8 @@
 		594317AA29A39628007A28EC /* LoginSwicher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594317A929A39628007A28EC /* LoginSwicher.swift */; };
 		594317AC29A398C9007A28EC /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594317AB29A398C9007A28EC /* ForgotPasswordScreen.swift */; };
 		5943C21B29A3A24B00586DE0 /* VerifyOTPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943C21A29A3A24B00586DE0 /* VerifyOTPScreen.swift */; };
+		597BE87F29A49B5400E014ED /* CreateProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597BE87E29A49B5400E014ED /* CreateProfileScreen.swift */; };
+		597BE88129A4C69000E014ED /* EditProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597BE88029A4C69000E014ED /* EditProfileScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		594317A929A39628007A28EC /* LoginSwicher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSwicher.swift; sourceTree = "<group>"; };
 		594317AB29A398C9007A28EC /* ForgotPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordScreen.swift; sourceTree = "<group>"; };
 		5943C21A29A3A24B00586DE0 /* VerifyOTPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPScreen.swift; sourceTree = "<group>"; };
+		597BE87E29A49B5400E014ED /* CreateProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileScreen.swift; sourceTree = "<group>"; };
+		597BE88029A4C69000E014ED /* EditProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 				594317A929A39628007A28EC /* LoginSwicher.swift */,
 				594317AB29A398C9007A28EC /* ForgotPasswordScreen.swift */,
 				5943C21A29A3A24B00586DE0 /* VerifyOTPScreen.swift */,
+				597BE87E29A49B5400E014ED /* CreateProfileScreen.swift */,
+				597BE88029A4C69000E014ED /* EditProfileScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -221,10 +227,12 @@
 				5943179729A389EB007A28EC /* AppColors.swift in Sources */,
 				594317A629A38BEE007A28EC /* SignupScreen.swift in Sources */,
 				5943177F29A389AC007A28EC /* ContentView.swift in Sources */,
+				597BE88129A4C69000E014ED /* EditProfileScreen.swift in Sources */,
 				5943179D29A389EB007A28EC /* ImageViewer.swift in Sources */,
 				594317AA29A39628007A28EC /* LoginSwicher.swift in Sources */,
 				594317A829A394BB007A28EC /* LoginScreen.swift in Sources */,
 				5943179A29A389EB007A28EC /* Shimmer.swift in Sources */,
+				597BE87F29A49B5400E014ED /* CreateProfileScreen.swift in Sources */,
 				5943179929A389EB007A28EC /* ImagePicker.swift in Sources */,
 				5943179C29A389EB007A28EC /* PinkButton.swift in Sources */,
 				5943179B29A389EB007A28EC /* SeekBar.swift in Sources */,
@@ -287,7 +295,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -341,7 +349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -373,6 +381,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.strangerchatapp.codecue.Review-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -401,6 +412,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.strangerchatapp.codecue.Review-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

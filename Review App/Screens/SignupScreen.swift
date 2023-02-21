@@ -23,6 +23,9 @@ struct SignupScreen: View {
 
     var body: some View {
         ZStack{
+            Color.white
+                .ignoresSafeArea(edges: .bottom)
+
             VStack{
                 Spacer()
                 //screen name
@@ -162,6 +165,9 @@ struct SignupScreen: View {
             }
             .padding(.leading,20)
             .padding(.trailing,20)
+            .padding(.top,10)
+            .padding(.bottom,10)
+
         }
         .navigationBarHidden(true)
 

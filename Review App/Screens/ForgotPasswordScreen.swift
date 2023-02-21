@@ -17,6 +17,10 @@ struct ForgotPasswordScreen: View {
 
     var body: some View {
         ZStack{
+            Color.white
+                .ignoresSafeArea(edges: .bottom)
+
+
             VStack{
                 
                 HStack{
@@ -192,6 +196,10 @@ struct ForgotPasswordScreen: View {
             }
             .padding(.leading,20)
             .padding(.trailing,20)
+            .padding(.top,10)
+            .padding(.bottom,10)
+
+
         }
         .navigationBarHidden(true)
     }

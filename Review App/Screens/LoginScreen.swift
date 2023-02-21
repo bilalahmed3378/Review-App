@@ -25,6 +25,10 @@ struct LoginScreen: View {
 
     var body: some View {
         ZStack{
+            Color.white
+                .ignoresSafeArea(edges: .bottom)
+
+
             VStack{
                 Spacer()
                 //screen name
@@ -170,8 +174,13 @@ struct LoginScreen: View {
                 }
                 .padding(.top,20)
 
-                BlueButton(lable: "Log in")
-                    .padding(.top,40)
+                NavigationLink(destination: {
+                    CreateProfileScreen()
+                }, label: {
+                    BlueButton(lable: "Log in")
+                        .padding(.top,40)
+                })
+              
                 
                 Divider()
                     .padding(.top,20)
@@ -198,6 +207,10 @@ struct LoginScreen: View {
             }
             .padding(.leading,20)
             .padding(.trailing,20)
+            .padding(.top,10)
+            .padding(.bottom,10)
+
+
         }
         .navigationBarHidden(true)
     }

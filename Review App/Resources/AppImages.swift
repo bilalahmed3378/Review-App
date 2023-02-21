@@ -9,6 +9,10 @@ import Foundation
 
 struct AppImages {
     
-    static let onboardingSvg = "OnboardingSvg"
+    static let profileCoverPic = "profileCoverPic"
+    static let profilePic = "profilePic"
+
+    
+    
    
 }
