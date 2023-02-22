@@ -9,6 +9,14 @@ import SwiftUI
 
 struct SignupScreen: View {
     
+    @StateObject var signupApi  = RegisterApi()
+    
+    @State  var pushToOTP = false
+
+
+    @State var showToast : Bool = false
+    @State var toastMessage : String = ""
+    
     @State var name  = ""
     @State var email  = ""
     @State var password  = ""
@@ -23,8 +31,13 @@ struct SignupScreen: View {
 
     var body: some View {
         ZStack{
+            
             Color.white
                 .ignoresSafeArea(edges: .bottom)
+            
+            NavigationLink(destination: VerifyOTPScreen(), isActive: self.$pushToOTP){
+                EmptyView()
+            }
 
             VStack{
                 Spacer()
@@ -134,9 +147,60 @@ struct SignupScreen: View {
 
                 }
                 .padding(.top,20)
+                
+                if(self.signupApi.isLoading){
+                    ProgressView()
+                        .onDisappear{
+                            if(self.signupApi.isApiCallDone && self.signupApi.isApiCallSuccessful){
+                                
+                                if(self.signupApi.registerSuccessful){
+                                    
+                                    self.pushToOTP = true
+                                }
+                                else if (self.signupApi.emailAlreadyInUse){
+                                    self.toastMessage = "This email already taken. Please try different email."
+                                    self.showToast = true
+                                }
+                                
+                            }
+                            else if(self.signupApi.isApiCallDone && (!self.signupApi.isApiCallSuccessful)){
+                                self.toastMessage = "Unable to access internet. Please check you internet connection and try again."
+                                self.showToast = true
+                            }
+                        }
+                }
+                else{
+                    Button(action: {
+                        if (self.email.isEmpty){
+                            self.toastMessage = "Please enter email"
+                            self.showToast = true
+                        }
+                        else if (self.isValidEmail(email: self.email)){
+                            self.toastMessage = "Email seems invalid. Please enter valid email address"
+                            self.showToast = true
+                        }
+                        else if (self.password.isEmpty){
+                            self.toastMessage = "Please enter password"
+                            self.showToast = true
+                        }
+                        else if !(self.isValidPassword()){
+                            self.toastMessage = "Password must be at least 8 characters long and must contains one special charater and number."
+                            self.showToast = true
+                        }
+                        
+                        
+                        else{
+                            self.signupApi.registerUser(name: self.name, email: self.email, password: self.password)
+                        }
+                    }, label: {
+                        BlueButton(lable: "Get Started")
+                            .padding(.top,20)
+                    })
+                  
+                }
 
-                BlueButton(lable: "Get Started")
-                    .padding(.top,20)
+                
+              
                 
                 Divider()
                     .padding(.top,20)
@@ -167,10 +231,35 @@ struct SignupScreen: View {
             .padding(.trailing,20)
             .padding(.top,10)
             .padding(.bottom,10)
+            
+            if(showToast){
+                Toast(isShowing: self.$showToast, message: self.toastMessage)
+            }
 
         }
         .navigationBarHidden(true)
 
+    }
+    
+    func isValidPassword() -> Bool {
+        // least one digit
+        // least one lowercase
+        // least one symbol
+        //  min 8 characters total
+        let password = self.password.trimmingCharacters(in: CharacterSet.whitespaces)
+        let passwordRegx = "^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&<>*~:`-]).{8,}$"
+        let passwordCheck = NSPredicate(format: "SELF MATCHES %@",passwordRegx)
+        return passwordCheck.evaluate(with: password)
+        
+    }
+    
+    
+    
+    
+    func isValidEmail(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return !emailTest.evaluate(with: email)
     }
 }
 

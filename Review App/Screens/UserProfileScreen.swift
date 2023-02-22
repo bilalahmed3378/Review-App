@@ -22,6 +22,7 @@ struct UserProfileScreen: View {
     
     var body: some View {
         ZStack{
+            
             VStack{
                 HStack{
                     

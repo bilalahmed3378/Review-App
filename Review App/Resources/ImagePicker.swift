@@ -66,3 +66,11 @@ struct ImagePicker: UIViewControllerRepresentable {
     }
 
 }
+
+
+struct selectedImageModel {
+    
+    let image: UIImage
+    let imageName: String
+    
+}

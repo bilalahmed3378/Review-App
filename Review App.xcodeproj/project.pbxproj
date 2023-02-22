@@ -33,6 +33,22 @@
 		597BE88329A4CE1600E014ED /* MyProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597BE88229A4CE1600E014ED /* MyProfileScreen.swift */; };
 		597BE88529A4D9B200E014ED /* MainTabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597BE88429A4D9B200E014ED /* MainTabContainer.swift */; };
 		597BE88729A4DBBF00E014ED /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597BE88629A4DBBE00E014ED /* HomeScreen.swift */; };
+		59849E4129A6162C0047373D /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59849E3E29A6162C0047373D /* LoginResponseModel.swift */; };
+		59849E4229A6162C0047373D /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59849E4029A6162C0047373D /* LoginApi.swift */; };
+		59A39CD529A6202E0087E6B1 /* getProfileResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A39CD229A6202E0087E6B1 /* getProfileResponseModel.swift */; };
+		59A39CD629A6202E0087E6B1 /* getProfileApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A39CD429A6202E0087E6B1 /* getProfileApi.swift */; };
+		59A39CDB29A62CEB0087E6B1 /* GetAllUsersResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A39CDA29A62CEB0087E6B1 /* GetAllUsersResponseModel.swift */; };
+		59A39CDD29A62DCF0087E6B1 /* GetAllUsersApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A39CDC29A62DCF0087E6B1 /* GetAllUsersApi.swift */; };
+		59A39CEB29A6415D0087E6B1 /* AddProfileDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A39CE729A6415D0087E6B1 /* AddProfileDataResponseModel.swift */; };
+		59A39CED29A6415D0087E6B1 /* AddProfileDataApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A39CEA29A6415D0087E6B1 /* AddProfileDataApi.swift */; };
+		59ACA1FE29A5F1BF00EC229A /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ACA1FD29A5F1BF00EC229A /* AppData.swift */; };
+		59ACA20229A5F20900EC229A /* NetworkConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ACA20129A5F20900EC229A /* NetworkConfigs.swift */; };
+		59ACA20A29A5F24E00EC229A /* RegisterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ACA20629A5F24D00EC229A /* RegisterResponseModel.swift */; };
+		59ACA20B29A5F24E00EC229A /* RegisterApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ACA20829A5F24D00EC229A /* RegisterApi.swift */; };
+		59ACA20D29A5F5FC00EC229A /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ACA20C29A5F5FC00EC229A /* Toast.swift */; };
+		59ACA21029A5F85000EC229A /* MultipartFormDataKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59ACA20F29A5F85000EC229A /* MultipartFormDataKit */; };
+		59ACA21329A5F86300EC229A /* MultipartForm in Frameworks */ = {isa = PBXBuildFile; productRef = 59ACA21229A5F86300EC229A /* MultipartForm */; };
+		59ACA21529A5F8A600EC229A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ACA21429A5F8A600EC229A /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +77,20 @@
 		597BE88229A4CE1600E014ED /* MyProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileScreen.swift; sourceTree = "<group>"; };
 		597BE88429A4D9B200E014ED /* MainTabContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabContainer.swift; sourceTree = "<group>"; };
 		597BE88629A4DBBE00E014ED /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		59849E3E29A6162C0047373D /* LoginResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
+		59849E4029A6162C0047373D /* LoginApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
+		59A39CD229A6202E0087E6B1 /* getProfileResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getProfileResponseModel.swift; sourceTree = "<group>"; };
+		59A39CD429A6202E0087E6B1 /* getProfileApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getProfileApi.swift; sourceTree = "<group>"; };
+		59A39CDA29A62CEB0087E6B1 /* GetAllUsersResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllUsersResponseModel.swift; sourceTree = "<group>"; };
+		59A39CDC29A62DCF0087E6B1 /* GetAllUsersApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllUsersApi.swift; sourceTree = "<group>"; };
+		59A39CE729A6415D0087E6B1 /* AddProfileDataResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProfileDataResponseModel.swift; sourceTree = "<group>"; };
+		59A39CEA29A6415D0087E6B1 /* AddProfileDataApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProfileDataApi.swift; sourceTree = "<group>"; };
+		59ACA1FD29A5F1BF00EC229A /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		59ACA20129A5F20900EC229A /* NetworkConfigs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConfigs.swift; sourceTree = "<group>"; };
+		59ACA20629A5F24D00EC229A /* RegisterResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterResponseModel.swift; sourceTree = "<group>"; };
+		59ACA20829A5F24D00EC229A /* RegisterApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterApi.swift; sourceTree = "<group>"; };
+		59ACA20C29A5F5FC00EC229A /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		59ACA21429A5F8A600EC229A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +99,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				594317A329A38A8F007A28EC /* Shimmer in Frameworks */,
+				59ACA21029A5F85000EC229A /* MultipartFormDataKit in Frameworks */,
 				594317A029A38A5E007A28EC /* Kingfisher in Frameworks */,
+				59ACA21329A5F86300EC229A /* MultipartForm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +127,7 @@
 		5943177B29A389AC007A28EC /* Review App */ = {
 			isa = PBXGroup;
 			children = (
+				59ACA1FF29A5F1DF00EC229A /* Network */,
 				594317A429A38BA7007A28EC /* Screens */,
 				5943178F29A389EA007A28EC /* Resources */,
 				5943178A29A389DC007A28EC /* Fonts */,
@@ -126,6 +159,9 @@
 		5943178F29A389EA007A28EC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				59ACA21429A5F8A600EC229A /* Constants.swift */,
+				59ACA20C29A5F5FC00EC229A /* Toast.swift */,
+				59ACA1FD29A5F1BF00EC229A /* AppData.swift */,
 				5943179029A389EA007A28EC /* AppColors.swift */,
 				5943179129A389EA007A28EC /* AppImages.swift */,
 				5943179229A389EA007A28EC /* ImagePicker.swift */,
@@ -155,6 +191,152 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
+		59849E3C29A6162C0047373D /* Login Api */ = {
+			isa = PBXGroup;
+			children = (
+				59849E3D29A6162C0047373D /* Models */,
+				59849E3F29A6162C0047373D /* Api */,
+			);
+			path = "Login Api";
+			sourceTree = "<group>";
+		};
+		59849E3D29A6162C0047373D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				59849E3E29A6162C0047373D /* LoginResponseModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		59849E3F29A6162C0047373D /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				59849E4029A6162C0047373D /* LoginApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		59A39CD029A6202E0087E6B1 /* Get Profile Api */ = {
+			isa = PBXGroup;
+			children = (
+				59A39CD129A6202E0087E6B1 /* Model */,
+				59A39CD329A6202E0087E6B1 /* Api */,
+			);
+			path = "Get Profile Api";
+			sourceTree = "<group>";
+		};
+		59A39CD129A6202E0087E6B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59A39CD229A6202E0087E6B1 /* getProfileResponseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		59A39CD329A6202E0087E6B1 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				59A39CD429A6202E0087E6B1 /* getProfileApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		59A39CD729A62CBC0087E6B1 /* Get All Users Api */ = {
+			isa = PBXGroup;
+			children = (
+				59A39CD929A62CD20087E6B1 /* Api */,
+				59A39CD829A62CCD0087E6B1 /* Model */,
+			);
+			path = "Get All Users Api";
+			sourceTree = "<group>";
+		};
+		59A39CD829A62CCD0087E6B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59A39CDA29A62CEB0087E6B1 /* GetAllUsersResponseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		59A39CD929A62CD20087E6B1 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				59A39CDC29A62DCF0087E6B1 /* GetAllUsersApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		59A39CE529A6415D0087E6B1 /* Add Profile Data Api */ = {
+			isa = PBXGroup;
+			children = (
+				59A39CE629A6415D0087E6B1 /* Models */,
+				59A39CE929A6415D0087E6B1 /* Api */,
+			);
+			path = "Add Profile Data Api";
+			sourceTree = "<group>";
+		};
+		59A39CE629A6415D0087E6B1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				59A39CE729A6415D0087E6B1 /* AddProfileDataResponseModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		59A39CE929A6415D0087E6B1 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				59A39CEA29A6415D0087E6B1 /* AddProfileDataApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		59ACA1FF29A5F1DF00EC229A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				59A39CE529A6415D0087E6B1 /* Add Profile Data Api */,
+				59A39CD729A62CBC0087E6B1 /* Get All Users Api */,
+				59A39CD029A6202E0087E6B1 /* Get Profile Api */,
+				59849E3C29A6162C0047373D /* Login Api */,
+				59ACA20329A5F24D00EC229A /* Register Api */,
+				59ACA20029A5F1E800EC229A /* Configs */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		59ACA20029A5F1E800EC229A /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				59ACA20129A5F20900EC229A /* NetworkConfigs.swift */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		59ACA20329A5F24D00EC229A /* Register Api */ = {
+			isa = PBXGroup;
+			children = (
+				59ACA20429A5F24D00EC229A /* Models */,
+				59ACA20729A5F24D00EC229A /* Api */,
+			);
+			path = "Register Api";
+			sourceTree = "<group>";
+		};
+		59ACA20429A5F24D00EC229A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				59ACA20629A5F24D00EC229A /* RegisterResponseModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		59ACA20729A5F24D00EC229A /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				59ACA20829A5F24D00EC229A /* RegisterApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -174,6 +356,8 @@
 			packageProductDependencies = (
 				5943179F29A38A5E007A28EC /* Kingfisher */,
 				594317A229A38A8F007A28EC /* Shimmer */,
+				59ACA20F29A5F85000EC229A /* MultipartFormDataKit */,
+				59ACA21229A5F86300EC229A /* MultipartForm */,
 			);
 			productName = "Review App";
 			productReference = 5943177929A389AC007A28EC /* Review App.app */;
@@ -206,6 +390,8 @@
 			packageReferences = (
 				5943179E29A38A5E007A28EC /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				594317A129A38A8F007A28EC /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				59ACA20E29A5F85000EC229A /* XCRemoteSwiftPackageReference "MultipartFormDataKit" */,
+				59ACA21129A5F86300EC229A /* XCRemoteSwiftPackageReference "MultipartForm" */,
 			);
 			productRefGroup = 5943177A29A389AC007A28EC /* Products */;
 			projectDirPath = "";
@@ -235,26 +421,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				59109B3329A4E58C007D328A /* UserProfileScreen.swift in Sources */,
+				59849E4229A6162C0047373D /* LoginApi.swift in Sources */,
+				59ACA20229A5F20900EC229A /* NetworkConfigs.swift in Sources */,
+				59A39CED29A6415D0087E6B1 /* AddProfileDataApi.swift in Sources */,
 				5943178E29A389DC007A28EC /* AppFonts.swift in Sources */,
+				59A39CDB29A62CEB0087E6B1 /* GetAllUsersResponseModel.swift in Sources */,
 				594317AC29A398C9007A28EC /* ForgotPasswordScreen.swift in Sources */,
+				59A39CEB29A6415D0087E6B1 /* AddProfileDataResponseModel.swift in Sources */,
 				5943179729A389EB007A28EC /* AppColors.swift in Sources */,
+				59ACA20B29A5F24E00EC229A /* RegisterApi.swift in Sources */,
 				594317A629A38BEE007A28EC /* SignupScreen.swift in Sources */,
+				59A39CD629A6202E0087E6B1 /* getProfileApi.swift in Sources */,
 				597BE88529A4D9B200E014ED /* MainTabContainer.swift in Sources */,
+				59849E4129A6162C0047373D /* LoginResponseModel.swift in Sources */,
 				5943177F29A389AC007A28EC /* ContentView.swift in Sources */,
 				597BE88129A4C69000E014ED /* EditProfileScreen.swift in Sources */,
 				5943179D29A389EB007A28EC /* ImageViewer.swift in Sources */,
+				59ACA20A29A5F24E00EC229A /* RegisterResponseModel.swift in Sources */,
 				594317AA29A39628007A28EC /* LoginSwicher.swift in Sources */,
+				59ACA20D29A5F5FC00EC229A /* Toast.swift in Sources */,
 				594317A829A394BB007A28EC /* LoginScreen.swift in Sources */,
 				597BE88329A4CE1600E014ED /* MyProfileScreen.swift in Sources */,
 				5943179A29A389EB007A28EC /* Shimmer.swift in Sources */,
 				597BE87F29A49B5400E014ED /* CreateProfileScreen.swift in Sources */,
 				5943179929A389EB007A28EC /* ImagePicker.swift in Sources */,
+				59ACA1FE29A5F1BF00EC229A /* AppData.swift in Sources */,
 				5943179C29A389EB007A28EC /* PinkButton.swift in Sources */,
 				5943179B29A389EB007A28EC /* SeekBar.swift in Sources */,
 				597BE88729A4DBBF00E014ED /* HomeScreen.swift in Sources */,
 				5943179829A389EB007A28EC /* AppImages.swift in Sources */,
 				5943177D29A389AC007A28EC /* Review_AppApp.swift in Sources */,
 				5943C21B29A3A24B00586DE0 /* VerifyOTPScreen.swift in Sources */,
+				59A39CDD29A62DCF0087E6B1 /* GetAllUsersApi.swift in Sources */,
+				59ACA21529A5F8A600EC229A /* Constants.swift in Sources */,
+				59A39CD529A6202E0087E6B1 /* getProfileResponseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +677,22 @@
 				kind = branch;
 			};
 		};
+		59ACA20E29A5F85000EC229A /* XCRemoteSwiftPackageReference "MultipartFormDataKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kuniwak/MultipartFormDataKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		59ACA21129A5F86300EC229A /* XCRemoteSwiftPackageReference "MultipartForm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/davbeck/MultipartForm.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -489,6 +705,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 594317A129A38A8F007A28EC /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
 			productName = Shimmer;
+		};
+		59ACA20F29A5F85000EC229A /* MultipartFormDataKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59ACA20E29A5F85000EC229A /* XCRemoteSwiftPackageReference "MultipartFormDataKit" */;
+			productName = MultipartFormDataKit;
+		};
+		59ACA21229A5F86300EC229A /* MultipartForm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59ACA21129A5F86300EC229A /* XCRemoteSwiftPackageReference "MultipartForm" */;
+			productName = MultipartForm;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

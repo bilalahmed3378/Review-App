@@ -8,6 +8,17 @@
 import SwiftUI
 
 struct LoginScreen: View {
+    
+    @StateObject var loginApi : LoginApi = LoginApi()
+    
+    @State var remmberMe : Bool = false
+
+    @State var isUserLoggedIn = false
+    
+    @State var showToast : Bool = false
+    @State var toastMessage : String = ""
+
+
     @State var name  = ""
     @State var email  = ""
     @State var password  = ""
@@ -25,6 +36,18 @@ struct LoginScreen: View {
 
     var body: some View {
         ZStack{
+            
+            if !(self.loginApi.hasToSetupProfile){
+                
+                NavigationLink(destination: MainTabContainer(), isActive: $isUserLoggedIn){
+                    EmptyView()
+                }
+            }
+            
+            NavigationLink(destination: CreateProfileScreen(), isActive: self.$loginApi.hasToSetupProfile){
+                EmptyView()
+            }
+            
             Color.white
                 .ignoresSafeArea(edges: .bottom)
 
@@ -64,6 +87,7 @@ struct LoginScreen: View {
                         
                         TextField("Enter your email", text: self.$email)
                             .padding(15)
+                            .autocapitalization(.none)
                             .background(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.textColor))
                             .onChange(of: self.email) { newValue in
                                 self.email = newValue.limit(limit : 50)
@@ -174,12 +198,80 @@ struct LoginScreen: View {
                 }
                 .padding(.top,20)
 
-                NavigationLink(destination: {
-                    CreateProfileScreen()
-                }, label: {
-                    BlueButton(lable: "Log in")
-                        .padding(.top,40)
-                })
+                if(self.loginApi.isLoading){
+                    ProgressView()
+                        .onDisappear{
+                           
+                           
+                           if(self.loginApi.isApiCallDone && self.loginApi.isApiCallSuccessful){
+                               
+                               
+                               if(self.loginApi.loginSuccessful){
+                                   
+                                   if(self.remmberMe){
+                                       AppData().saveRememberMeData(email: self.email, password: self.password)
+                                   }
+                                   
+                                   
+                                   if(self.loginApi.apiResponse!.docs != nil){
+                                       
+                                       AppData().setRemeberMe(rememberMe: self.remmberMe)
+                                       AppData().saveUserDetails(user: self.loginApi.apiResponse!.docs!)
+                                       AppData().userLoggedIn()
+                                       self.isUserLoggedIn = true
+                                       
+                                       
+                                   }
+                                   
+                                   else{
+                                       
+                                       withAnimation{
+                                           self.isUserLoggedIn = true
+                                           
+                                       }
+                                       
+                                   }
+                                   
+                                   
+                               }
+                               else{
+                                   
+                                   
+                                   self.toastMessage = "Email or password incorrent"
+                                   self.showToast = true
+                               }
+                           }
+                           else if(self.loginApi.isApiCallDone && (!self.loginApi.isApiCallSuccessful)){
+                               self.toastMessage = "Unable to access internet. Please check you internet connection and try again."
+                               self.showToast = true
+                           }
+                           
+                       }
+                }
+                else{
+                    Button(action: {
+                        if(self.email.isEmpty){
+                            self.toastMessage = "Please enter email."
+                            self.showToast = true
+                        }
+                        else if(self.password.isEmpty){
+                            self.toastMessage = "Please enter password."
+                            self.showToast = true
+                        }
+                        else{
+                            
+                            self.loginApi.loginUser(email: self.email, password: self.password)
+                            
+                        }
+                    }, label: {
+                        BlueButton(lable: "Log in")
+                            .padding(.top,40)
+                    })
+                   
+                }
+              
+                  
+                
               
                 
                 Divider()
@@ -209,10 +301,28 @@ struct LoginScreen: View {
             .padding(.trailing,20)
             .padding(.top,10)
             .padding(.bottom,10)
+            
+            if(showToast){
+                Toast(isShowing: self.$showToast, message: self.toastMessage)
+            }
 
 
         }
         .navigationBarHidden(true)
+        .onAppear{
+            let appData = AppData()
+            self.remmberMe = appData.isRememberMe()
+            if(self.remmberMe){
+                self.email = appData.getUserEmail()
+                self.password = appData.getUserPassword()
+            }
+            
+            if (appData.isUserLoggedIn()){
+                
+                self.isUserLoggedIn = true
+            }
+            
+        }
     }
 }
 
