@@ -4,22 +4,32 @@
 //
 //  Created by Bilal Ahmed on 21/02/2023.
 //
-
+import Foundation
 import SwiftUI
 import Kingfisher
 
 struct MyProfileScreen: View {
     
     @StateObject var getProfileApi = GetProfileApi()
+    @StateObject var getReviews = GetReviewsApi()
+
+    let dateFormatter = ISO8601DateFormatter()
 
     @State var isLoadingFirstTime = true
+    
+    @Binding var isUserLoggedIn : Bool
+    
+    @State var currentDate = ""
+    
+    init(isUserLoggedIn : Binding<Bool>){
+        self._isUserLoggedIn = isUserLoggedIn
+    }
 
     
     var body: some View {
         ZStack{
             
            
-            
             VStack{
                 HStack{
                     
@@ -30,8 +40,21 @@ struct MyProfileScreen: View {
                     
                     Spacer()
                     
+                  NavigationLink(destination: {
+                      LogoutScreen(isUserLoggedIn: self.$isUserLoggedIn)
+                  }, label: {
+                      Image(systemName: "rectangle.portrait.and.arrow.right")
+                          .resizable()
+                          .aspectRatio( contentMode: .fit)
+                          .frame(width: 20, height: 20)
+                          .foregroundColor(.red)
+                          .padding(.trailing,5)
+                  
+                  })
+                       
+                    
                     NavigationLink(destination: {
-                        CreateProfileScreen()
+                        EditProfileScreen()
                     }, label: {
                         Image(systemName: "square.and.pencil")
                             .resizable()
@@ -57,6 +80,15 @@ struct MyProfileScreen: View {
 
                             ProgressView()
                                 .padding()
+                                .onDisappear{
+                                    
+//                                        self.getReviews.getReviews(id: self.getProfileApi.apiResponse!.docs!._id)
+                                    self.getReviews.getReviews(id: "63edd1c7d0f679057597fe19")
+
+                                    
+                                    
+                                    
+                                }
 
 
                             Spacer()
@@ -202,82 +234,172 @@ struct MyProfileScreen: View {
                                 }
                                 .padding(.top,20)
                                 
-                                LazyVStack{
-                                    ForEach(0...4, id: \.self){index in
-                                        HStack(alignment: .top){
-                                            Image(uiImage: UIImage(named: AppImages.profilePic)!)
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fill)
-                                                .frame(width: 40, height: 40)
-                                                .clipShape(Circle())
-                                            
-                                            VStack(alignment: .leading){
-                                                
-                                                HStack{
-                                                    Text("Sa*********142")
-                                                        .foregroundColor(.black)
-                                                        .font(AppFonts.ceraPro_16)
-                                                        .fontWeight(.bold)
-                                                    
-                                                    Spacer()
-                                                    
-                                                    Text("Today")
-                                                        .foregroundColor(AppColors.textColor)
-                                                        .font(AppFonts.ceraPro_14)
-                                                    
-                                                }
-                                                
-                                                HStack{
-                                                    
-                                                    Image(systemName: "star.fill")
-                                                        .resizable()
-                                                        .aspectRatio( contentMode: .fit)
-                                                        .frame(width: 14, height: 14)
-                                                        .foregroundColor(.yellow)
-                                                        .padding(.trailing,1)
-                                                    
-                                                    Image(systemName: "star.fill")
-                                                        .resizable()
-                                                        .aspectRatio( contentMode: .fit)
-                                                        .frame(width: 14, height: 14)
-                                                        .foregroundColor(.yellow)
-                                                        .padding(.trailing,1)
+                                if(self.getReviews.isLoading){
 
-                                                    
-                                                    Image(systemName: "star.fill")
-                                                        .resizable()
-                                                        .aspectRatio( contentMode: .fit)
-                                                        .frame(width: 14, height: 14)
-                                                        .foregroundColor(.yellow)
-                                                        .padding(.trailing,1)
+                                    VStack{
 
-                                                    
-                                                    Image(systemName: "star.fill")
-                                                        .resizable()
-                                                        .aspectRatio( contentMode: .fit)
-                                                        .frame(width: 14, height: 14)
-                                                        .foregroundColor(.yellow)
-                                                        .padding(.trailing,1)
+                                        Spacer()
 
-                                                    
-                                                    Image(systemName: "star.fill")
-                                                        .resizable()
-                                                        .aspectRatio( contentMode: .fit)
-                                                        .frame(width: 14, height: 14)
-                                                        .foregroundColor(.yellow)
-                                                }
-                                                
-                                                Text("Perfect for kepping your feet dry and warm in damp conditions")
-                                                    .foregroundColor(.black)
-                                                    .font(AppFonts.ceraPro_14)
-                                                    .fontWeight(.ultraLight)
-                                                
-                                            }
+                                        HStack{
+
+                                            Spacer()
+
+                                            ProgressView()
+                                                .padding()
+
+
+                                            Spacer()
+
+                                        }
+
+
+                                        Spacer()
+
+                                    }
+
+
+                                }
+                                
+                                else if(self.getReviews.isApiCallDone && (!self.getReviews.isApiCallSuccessful)){
+                                    
+                                    VStack{
+                                        
+                                        
+                                        Spacer()
+                                        
+                                        Text("Unable to access internet.")
+                                            .font(.system(size: 14))
+                                            .foregroundColor(.black)
+                                        
+                                        Button(action: {
+                                            withAnimation{
+                                                if !(self.getProfileApi.apiResponse!.docs!._id.isEmpty){
+                                                    self.getReviews.getReviews(id: self.getProfileApi.apiResponse!.docs!._id)
+                                                }                                            }
+                                        }){
+                                            Text("Try Agin")
+                                                .font(.system(size: 14))
+                                                .foregroundColor(.white)
+                                                .padding()
+                                                .background(RoundedRectangle(cornerRadius: 5).fill(.blue))
                                             
                                         }
-                                        .padding(.top,20)
+                                        .padding(.top,30)
+                                        
+                                        Spacer()
+                                        
                                     }
                                 }
+
+                                else if(self.getReviews.isApiCallDone && self.getReviews.isApiCallSuccessful){
+                                    
+                                    if(self.getReviews.dataRetrivedSuccessfully){
+                                        
+                                        LazyVStack{
+                                            ForEach(self.getReviews.apiResponse!.docs!.indices, id: \.self){index in
+                                                
+                                                HStack(alignment: .top){
+                                                    KFImage(URL(string: self.getReviews.apiResponse!.docs![index].reviewerId!.profileImage))
+                                                        .resizable()
+                                                        .aspectRatio(contentMode: .fill)
+                                                        .frame(width: 40, height: 40)
+                                                        .clipShape(Circle())
+                                                    
+                                                    VStack(alignment: .leading){
+//                                                        let date = dateFormatter.date(from: self.getReviews.apiResponse!.docs![index].createdAt)
+
+                                                        HStack{
+                                                            Text("\(self.getReviews.apiResponse!.docs![index].reviewFor!.firstname) \(self.getReviews.apiResponse!.docs![index].reviewFor!.lastname)")
+                                                                .foregroundColor(.black)
+                                                                .font(AppFonts.ceraPro_16)
+                                                                .fontWeight(.bold)
+                                                            
+                                                            Spacer()
+                                                            
+                                                            Text(self.currentDate)
+                                                                .foregroundColor(AppColors.textColor)
+                                                                .font(AppFonts.ceraPro_14)
+                                                                .onAppear{
+                                                                    
+                                                                  let arr  = self.getReviews.apiResponse!.docs![index].createdAt.split(separator: "T")
+                                                                    
+                                                                    self.currentDate = String(arr[0])
+                                                                    
+                                                                }
+
+                                                           
+                                                            
+                                                        }
+                                                        
+                                                    
+                                                        
+                                                        RatingView(rating: Double(self.getReviews.apiResponse!.docs![index].ratings))
+                                                            .padding(.top,3)
+                                                        
+                                                        Text("\(self.getReviews.apiResponse!.docs![index].message)")
+                                                            .foregroundColor(.black)
+                                                            .font(AppFonts.ceraPro_14)
+                                                            .fontWeight(.ultraLight)
+                                                            .padding(.top,3)
+                                                        
+                                                    }
+                                                    
+                                                }
+                                                .padding(.top,20)
+                                            }
+                                        }
+                                    }
+                                    
+                                    else{
+                                        VStack{
+                                            
+                                            Spacer()
+                                            
+                                            Text("No Review Available")
+                                                .font(.system(size: 14))
+                                                .foregroundColor(.black)
+                                            
+                                           
+                                            
+                                            Spacer()
+                                            
+                                        }
+                                    }
+                                    
+                                }
+                                
+                                else{
+                                    
+                                    VStack{
+                                        
+                                        Spacer()
+                                        
+                                        Text("Unable to get reviews.")
+                                            .font(.system(size: 14))
+                                            .foregroundColor(.black)
+                                        
+                                        Button(action: {
+                                            withAnimation{
+                                                if !(self.getProfileApi.apiResponse!.docs!._id.isEmpty){
+                                                    self.getReviews.getReviews(id: self.getProfileApi.apiResponse!.docs!._id)
+                                                }                                            }
+                                        }){
+                                            Text("Try Agin")
+                                                .font(.system(size: 14))
+                                                .foregroundColor(.white)
+                                                .padding()
+                                                .background(RoundedRectangle(cornerRadius: 5).fill(.blue))
+                                            
+                                        }
+                                        .padding(.top,30)
+                                        
+                                        Spacer()
+                                        
+                                    }
+                                    
+                                }
+                                
+                               
                                
                             }
                             .padding(.leading,20)

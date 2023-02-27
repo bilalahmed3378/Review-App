@@ -1,27 +1,27 @@
 //
-//  GetAllUsersApi.swift
+//  SendResetPasswordOTPApi.swift
 //  Review App
 //
-//  Created by Bilal Ahmed on 22/02/2023.
+//  Created by Bilal Ahmed on 27/02/2023.
 //
 
 import Foundation
-import SwiftUI
 
-class GetAllUsersApi : ObservableObject{
+
+class SendResetPasswordOTPApi : ObservableObject{
     
     @Published var isLoading = false
     @Published var isApiCallDone = false
     @Published var isApiCallSuccessful = false
     @Published var dataRetrivedSuccessfully = false
-    @Published var apiResponse :  GetAllUsersResponseModel?
-    @Published var isLoadingMore = false
+    @Published var apiResponse :  SendResetPasswordOTPResponseModel?
+    @Published var userNotFound = false
 
     
     
     
     
-    func getAllUsers(){
+    func getOTP(email : String){
         
         self.isLoading = true
         self.isApiCallSuccessful = true
@@ -29,12 +29,11 @@ class GetAllUsersApi : ObservableObject{
         self.isApiCallDone = false
         
         //Create url
-        guard let url = URL(string: NetworkConfig.baseUrl + NetworkConfig.allUsers ) else {return}
+        guard let url = URL(string: NetworkConfig.baseUrl + NetworkConfig.sendResetPasswordOTP + "/\(email)" ) else {return}
         
         
         let token = AppData().getBearerToken()
         
-        print(AppData().getBearerToken())
         
         //Create request
         var request = URLRequest(url: url)
@@ -62,32 +61,27 @@ class GetAllUsersApi : ObservableObject{
             
             
             do{
-                print("Got view all users response succesfully.....")
+                print("Got send reset password otp response succesfully.....")
                 DispatchQueue.main.async {
                     self.isApiCallDone = true
                 }
-                let main = try JSONDecoder().decode(GetAllUsersResponseModel.self, from: data)
+                let main = try JSONDecoder().decode(SendResetPasswordOTPResponseModel.self, from: data)
                 
                 DispatchQueue.main.async {
                     self.apiResponse = main
                     self.isApiCallSuccessful  = true
                     
-                    if(main.message == "okk"){
+                    if(main.message == "otp sent"){
                         
-                    if !(main.docs.isEmpty){
-                            
                             self.dataRetrivedSuccessfully = true
-                        
-                        }
-                        
-                        else{
                             
-                            self.dataRetrivedSuccessfully = false
-                            
-                            
-                        }
+                    }
+                    else if(main.message == "User Not Found"){
+                        self.dataRetrivedSuccessfully = false
+                        self.userNotFound = true
+
                         
-                        
+                        print("register invalid data")
                     }
                     
                     else{
@@ -96,7 +90,6 @@ class GetAllUsersApi : ObservableObject{
                     self.isLoading = false
                 }
             }catch{  // if error
-                print("in error body of catch")
                 print(error)
                 DispatchQueue.main.async {
                     print(error)
@@ -117,5 +110,4 @@ class GetAllUsersApi : ObservableObject{
     
     
 }
-
 

@@ -13,10 +13,14 @@ struct HomeScreen: View {
     @StateObject var getAllUsers : GetAllUsersApi = GetAllUsersApi()
     
     @State var usersList: [GetAllUsersDocsModel] = []
+    
+    @State var toDetail : Bool = false
 
 
     var body: some View {
         ZStack{
+            
+           
             VStack{
                 TextField("Search user name here", text: self.$search)
                     .foregroundColor(AppColors.textColor)
@@ -102,78 +106,88 @@ struct HomeScreen: View {
                             LazyVStack{
                                 ForEach(self.getAllUsers.apiResponse!.docs.indices, id: \.self){index in
                                     
-                                    HStack{
-                                        KFImage(URL(string: self.getAllUsers.apiResponse!.docs[index].profileImage))
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 75, height: 75)
-                                            .clipShape(Circle())
-                                        
-                                        VStack(alignment: .leading){
+                                    NavigationLink(destination: UserProfileScreen(user_id: self.getAllUsers.apiResponse!.docs[index]._id), isActive: self.$toDetail){
+                                        EmptyView()
+                                    }
+                                    
+                                    Button(action: {
+                                        self.toDetail = true
+                                    }, label: {
+                                        HStack{
+                                            KFImage(URL(string: self.getAllUsers.apiResponse!.docs[index].profileImage))
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                .frame(width: 75, height: 75)
+                                                .clipShape(Circle())
                                             
-                                            Text("\(self.getAllUsers.apiResponse!.docs[index].firstname) \(self.getAllUsers.apiResponse!.docs[index].lastname)")
-                                                .foregroundColor(.black)
-                                                .font(AppFonts.ceraPro_16)
-                                            
-                                            Text("\(self.getAllUsers.apiResponse!.docs[index].tagline)")
-                                                .foregroundColor(AppColors.textColor)
-                                                .font(AppFonts.ceraPro_14)
-                                                .padding(.top,2)
-                                            
-                                            HStack{
-                                                Spacer()
+                                            VStack(alignment: .leading){
+                                                
+                                                Text("\(self.getAllUsers.apiResponse!.docs[index].firstname) \(self.getAllUsers.apiResponse!.docs[index].lastname)")
+                                                    .foregroundColor(.black)
+                                                    .font(AppFonts.ceraPro_16)
+                                                
+                                                Text("\(self.getAllUsers.apiResponse!.docs[index].tagline)")
+                                                    .foregroundColor(AppColors.textColor)
+                                                    .font(AppFonts.ceraPro_14)
+                                                    .padding(.top,2)
                                                 
                                                 HStack{
+                                                    Spacer()
                                                     
-                                                    Image(systemName: "star.fill")
-                                                        .resizable()
-                                                        .aspectRatio( contentMode: .fit)
-                                                        .frame(width: 10, height: 10)
-                                                        .foregroundColor(.yellow)
-                                                        .padding(.trailing,2)
+                                                    HStack{
+                                                        
+                                                        Image(systemName: "star.fill")
+                                                            .resizable()
+                                                            .aspectRatio( contentMode: .fit)
+                                                            .frame(width: 10, height: 10)
+                                                            .foregroundColor(.yellow)
+                                                            .padding(.trailing,2)
+                                                        
+                                                        Image(systemName: "star.fill")
+                                                            .resizable()
+                                                            .aspectRatio( contentMode: .fit)
+                                                            .frame(width: 10, height: 10)
+                                                            .foregroundColor(.yellow)
+                                                            .padding(.trailing,2)
+                                                        
+                                                        Image(systemName: "star.fill")
+                                                            .resizable()
+                                                            .aspectRatio( contentMode: .fit)
+                                                            .frame(width: 10, height: 10)
+                                                            .foregroundColor(.yellow)
+                                                            .padding(.trailing,2)
+                                                        
+                                                        Image(systemName: "star.fill")
+                                                            .resizable()
+                                                            .aspectRatio( contentMode: .fit)
+                                                            .frame(width: 10, height: 10)
+                                                            .foregroundColor(.yellow)
+                                                            .padding(.trailing,2)
+                                                        
+                                                        Image(systemName: "star.fill")
+                                                            .resizable()
+                                                            .aspectRatio( contentMode: .fit)
+                                                            .frame(width: 10, height: 10)
+                                                            .foregroundColor(.yellow)
+                                                            .padding(.trailing,2)
+                                                        
+                                                      
+                                                    }
                                                     
-                                                    Image(systemName: "star.fill")
-                                                        .resizable()
-                                                        .aspectRatio( contentMode: .fit)
-                                                        .frame(width: 10, height: 10)
-                                                        .foregroundColor(.yellow)
-                                                        .padding(.trailing,2)
-                                                    
-                                                    Image(systemName: "star.fill")
-                                                        .resizable()
-                                                        .aspectRatio( contentMode: .fit)
-                                                        .frame(width: 10, height: 10)
-                                                        .foregroundColor(.yellow)
-                                                        .padding(.trailing,2)
-                                                    
-                                                    Image(systemName: "star.fill")
-                                                        .resizable()
-                                                        .aspectRatio( contentMode: .fit)
-                                                        .frame(width: 10, height: 10)
-                                                        .foregroundColor(.yellow)
-                                                        .padding(.trailing,2)
-                                                    
-                                                    Image(systemName: "star.fill")
-                                                        .resizable()
-                                                        .aspectRatio( contentMode: .fit)
-                                                        .frame(width: 10, height: 10)
-                                                        .foregroundColor(.yellow)
-                                                        .padding(.trailing,2)
-                                                    
-                                                  
+                                                    Text("(1039)")
+                                                        .foregroundColor(.black)
+                                                        .font(AppFonts.ceraPro_14)
                                                 }
                                                 
-                                                Text("(1039)")
-                                                    .foregroundColor(.black)
-                                                    .font(AppFonts.ceraPro_14)
                                             }
-                                            
+                                            .padding(.leading,3)
                                         }
-                                        .padding(.leading,3)
-                                    }
-                                    .padding(10)
-                                    .background(RoundedRectangle(cornerRadius: 10).fill(.gray.opacity(0.1)))
-                                 
+                                        .padding(10)
+                                        .background(RoundedRectangle(cornerRadius: 10).fill(.gray.opacity(0.1)))
+                                        .padding(.top,10)
+                                     
+                                    })
+                                    
                                        
                                     
                                    
@@ -182,6 +196,7 @@ struct HomeScreen: View {
                             .padding(.leading,20)
                             .padding(.trailing,20)
                             .padding(.top,10)
+                            .padding(.bottom,80)
                             
                         }
                     }

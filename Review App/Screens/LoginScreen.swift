@@ -18,7 +18,9 @@ struct LoginScreen: View {
     @State var showToast : Bool = false
     @State var toastMessage : String = ""
 
+    @State var toCreatedProfile : Bool = false
 
+    
     @State var name  = ""
     @State var email  = ""
     @State var password  = ""
@@ -39,12 +41,12 @@ struct LoginScreen: View {
             
             if !(self.loginApi.hasToSetupProfile){
                 
-                NavigationLink(destination: MainTabContainer(), isActive: $isUserLoggedIn){
+                NavigationLink(destination: MainTabContainer(isUserLoggedIn: self.$isUserLoggedIn), isActive: $isUserLoggedIn){
                     EmptyView()
                 }
             }
             
-            NavigationLink(destination: CreateProfileScreen(), isActive: self.$loginApi.hasToSetupProfile){
+            NavigationLink(destination: CreateProfileScreen(), isActive: self.$toCreatedProfile){
                 EmptyView()
             }
             
@@ -62,6 +64,7 @@ struct LoginScreen: View {
                         .fontWeight(.bold)
                     Spacer()
                 }
+                .padding(.top,10)
                
                 HStack{
                     Text("Welcome back! Enter your email and password below to Log in.")
@@ -105,7 +108,7 @@ struct LoginScreen: View {
                             Spacer()
                             
                             NavigationLink(destination: {
-                                ForgotPasswordScreen()
+                                ForgotPasswordEmailScreen()
                             }, label: {
                                 Text("Forgot password?")
                                     .foregroundColor(AppColors.appPrimaryColor)
@@ -226,7 +229,7 @@ struct LoginScreen: View {
                                    else{
                                        
                                        withAnimation{
-                                           self.isUserLoggedIn = true
+                                           self.toCreatedProfile = true
                                            
                                        }
                                        

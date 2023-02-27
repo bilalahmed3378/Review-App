@@ -9,6 +9,9 @@ import SwiftUI
 
 struct UserProfileScreen: View {
     @Environment(\.presentationMode) var presentationMode
+    
+    @StateObject var getUserProfileApi = GetUserProfileDetailsApi()
+
 
     @State var description = ""
     @State var writeReview = ""
@@ -16,7 +19,12 @@ struct UserProfileScreen: View {
     @State var showSheet : Bool = false
     @State var reviewSheet : Bool = false
 
+    let  user_id : String
+   
     
+    init(user_id : String){
+        self.user_id = user_id
+    }
     
     
     
@@ -24,6 +32,7 @@ struct UserProfileScreen: View {
         ZStack{
             
             VStack{
+                
                 HStack{
                     
                     Button(action: {
@@ -42,6 +51,8 @@ struct UserProfileScreen: View {
                 .padding(.leading,20)
                 .padding(.trailing,20)
                 .padding(.top,5)
+                
+                
                 
                 ScrollView(.vertical, showsIndicators: false){
                     VStack{
@@ -663,6 +674,9 @@ struct UserProfileScreen: View {
                 }
             }
             
+        }
+        .onAppear{
+            self.getUserProfileApi.getUserProfile(id: self.user_id)
         }
     }
 }

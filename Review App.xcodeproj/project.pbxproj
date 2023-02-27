@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		59109B3329A4E58C007D328A /* UserProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59109B3229A4E58C007D328A /* UserProfileScreen.swift */; };
+		5924E6F529ACB1FD007E10B5 /* SendResetPasswordOTPResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5924E6F429ACB1FD007E10B5 /* SendResetPasswordOTPResponseModel.swift */; };
+		5924E6F729ACB23A007E10B5 /* SendResetPasswordOTPApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5924E6F629ACB23A007E10B5 /* SendResetPasswordOTPApi.swift */; };
+		5924E6F929ACB490007E10B5 /* ForgotPasswordEmailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5924E6F829ACB490007E10B5 /* ForgotPasswordEmailScreen.swift */; };
+		5924E6FE29ACBC0E007E10B5 /* VerifyOTPResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5924E6FD29ACBC0E007E10B5 /* VerifyOTPResponseModel.swift */; };
+		5924E70029ACBD24007E10B5 /* VerifyOTPApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5924E6FF29ACBD24007E10B5 /* VerifyOTPApi.swift */; };
+		5924E70529ACD267007E10B5 /* NewPasswordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5924E70429ACD267007E10B5 /* NewPasswordResponseModel.swift */; };
+		5924E70729ACD288007E10B5 /* NewPasswordApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5924E70629ACD288007E10B5 /* NewPasswordApi.swift */; };
 		5943177D29A389AC007A28EC /* Review_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943177C29A389AC007A28EC /* Review_AppApp.swift */; };
 		5943177F29A389AC007A28EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943177E29A389AC007A28EC /* ContentView.swift */; };
 		5943178129A389B3007A28EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5943178029A389B3007A28EC /* Assets.xcassets */; };
@@ -49,10 +56,24 @@
 		59ACA21029A5F85000EC229A /* MultipartFormDataKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59ACA20F29A5F85000EC229A /* MultipartFormDataKit */; };
 		59ACA21329A5F86300EC229A /* MultipartForm in Frameworks */ = {isa = PBXBuildFile; productRef = 59ACA21229A5F86300EC229A /* MultipartForm */; };
 		59ACA21529A5F8A600EC229A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ACA21429A5F8A600EC229A /* Constants.swift */; };
+		59E65EA529A7374D005AC052 /* LogoutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E65EA429A7374C005AC052 /* LogoutScreen.swift */; };
+		59E65EAA29A73CD0005AC052 /* EditProfileResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E65EA929A73CD0005AC052 /* EditProfileResponseModel.swift */; };
+		59E65EAC29A73DC9005AC052 /* EditProfileApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E65EAB29A73DC9005AC052 /* EditProfileApi.swift */; };
+		59E65EB129A74FDD005AC052 /* GetUserDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E65EB029A74FDD005AC052 /* GetUserDetailsResponseModel.swift */; };
+		59E65EB329A75037005AC052 /* GetUserDetailsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E65EB229A75037005AC052 /* GetUserDetailsApi.swift */; };
+		59E65EB829A7773E005AC052 /* GetReviewsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E65EB729A7773E005AC052 /* GetReviewsResponseModel.swift */; };
+		59E65EBA29A779CD005AC052 /* GetReviewsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E65EB929A779CD005AC052 /* GetReviewsApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		59109B3229A4E58C007D328A /* UserProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileScreen.swift; sourceTree = "<group>"; };
+		5924E6F429ACB1FD007E10B5 /* SendResetPasswordOTPResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendResetPasswordOTPResponseModel.swift; sourceTree = "<group>"; };
+		5924E6F629ACB23A007E10B5 /* SendResetPasswordOTPApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendResetPasswordOTPApi.swift; sourceTree = "<group>"; };
+		5924E6F829ACB490007E10B5 /* ForgotPasswordEmailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordEmailScreen.swift; sourceTree = "<group>"; };
+		5924E6FD29ACBC0E007E10B5 /* VerifyOTPResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPResponseModel.swift; sourceTree = "<group>"; };
+		5924E6FF29ACBD24007E10B5 /* VerifyOTPApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPApi.swift; sourceTree = "<group>"; };
+		5924E70429ACD267007E10B5 /* NewPasswordResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordResponseModel.swift; sourceTree = "<group>"; };
+		5924E70629ACD288007E10B5 /* NewPasswordApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordApi.swift; sourceTree = "<group>"; };
 		5943177929A389AC007A28EC /* Review App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Review App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5943177C29A389AC007A28EC /* Review_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review_AppApp.swift; sourceTree = "<group>"; };
 		5943177E29A389AC007A28EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,6 +112,13 @@
 		59ACA20829A5F24D00EC229A /* RegisterApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterApi.swift; sourceTree = "<group>"; };
 		59ACA20C29A5F5FC00EC229A /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		59ACA21429A5F8A600EC229A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		59E65EA429A7374C005AC052 /* LogoutScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutScreen.swift; sourceTree = "<group>"; };
+		59E65EA929A73CD0005AC052 /* EditProfileResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileResponseModel.swift; sourceTree = "<group>"; };
+		59E65EAB29A73DC9005AC052 /* EditProfileApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileApi.swift; sourceTree = "<group>"; };
+		59E65EB029A74FDD005AC052 /* GetUserDetailsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserDetailsResponseModel.swift; sourceTree = "<group>"; };
+		59E65EB229A75037005AC052 /* GetUserDetailsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserDetailsApi.swift; sourceTree = "<group>"; };
+		59E65EB729A7773E005AC052 /* GetReviewsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewsResponseModel.swift; sourceTree = "<group>"; };
+		59E65EB929A779CD005AC052 /* GetReviewsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewsApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +136,81 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5924E6F129ACB1C2007E10B5 /* Send Reset Password Api */ = {
+			isa = PBXGroup;
+			children = (
+				5924E6F329ACB1D8007E10B5 /* Api */,
+				5924E6F229ACB1D3007E10B5 /* Model */,
+			);
+			path = "Send Reset Password Api";
+			sourceTree = "<group>";
+		};
+		5924E6F229ACB1D3007E10B5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5924E6F429ACB1FD007E10B5 /* SendResetPasswordOTPResponseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5924E6F329ACB1D8007E10B5 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				5924E6F629ACB23A007E10B5 /* SendResetPasswordOTPApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		5924E6FA29ACBBDB007E10B5 /* Verify OTP Api */ = {
+			isa = PBXGroup;
+			children = (
+				5924E6FC29ACBBF3007E10B5 /* Api */,
+				5924E6FB29ACBBEF007E10B5 /* Model */,
+			);
+			path = "Verify OTP Api";
+			sourceTree = "<group>";
+		};
+		5924E6FB29ACBBEF007E10B5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5924E6FD29ACBC0E007E10B5 /* VerifyOTPResponseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5924E6FC29ACBBF3007E10B5 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				5924E6FF29ACBD24007E10B5 /* VerifyOTPApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		5924E70129ACD108007E10B5 /* New Password Api */ = {
+			isa = PBXGroup;
+			children = (
+				5924E70329ACD11E007E10B5 /* Api */,
+				5924E70229ACD119007E10B5 /* Model */,
+			);
+			path = "New Password Api";
+			sourceTree = "<group>";
+		};
+		5924E70229ACD119007E10B5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5924E70429ACD267007E10B5 /* NewPasswordResponseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5924E70329ACD11E007E10B5 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				5924E70629ACD288007E10B5 /* NewPasswordApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
 		5943177029A389AC007A28EC = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +290,8 @@
 				597BE88429A4D9B200E014ED /* MainTabContainer.swift */,
 				597BE88629A4DBBE00E014ED /* HomeScreen.swift */,
 				59109B3229A4E58C007D328A /* UserProfileScreen.swift */,
+				59E65EA429A7374C005AC052 /* LogoutScreen.swift */,
+				5924E6F829ACB490007E10B5 /* ForgotPasswordEmailScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -294,6 +399,12 @@
 		59ACA1FF29A5F1DF00EC229A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				5924E70129ACD108007E10B5 /* New Password Api */,
+				5924E6FA29ACBBDB007E10B5 /* Verify OTP Api */,
+				5924E6F129ACB1C2007E10B5 /* Send Reset Password Api */,
+				59E65EB429A776DB005AC052 /* Get Reviews Api */,
+				59E65EAD29A74FB1005AC052 /* Get User Detail Api */,
+				59E65EA629A73CA3005AC052 /* Edit Profile Api */,
 				59A39CE529A6415D0087E6B1 /* Add Profile Data Api */,
 				59A39CD729A62CBC0087E6B1 /* Get All Users Api */,
 				59A39CD029A6202E0087E6B1 /* Get Profile Api */,
@@ -333,6 +444,81 @@
 			isa = PBXGroup;
 			children = (
 				59ACA20829A5F24D00EC229A /* RegisterApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		59E65EA629A73CA3005AC052 /* Edit Profile Api */ = {
+			isa = PBXGroup;
+			children = (
+				59E65EA829A73CB3005AC052 /* Api */,
+				59E65EA729A73CAD005AC052 /* Model */,
+			);
+			path = "Edit Profile Api";
+			sourceTree = "<group>";
+		};
+		59E65EA729A73CAD005AC052 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59E65EA929A73CD0005AC052 /* EditProfileResponseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		59E65EA829A73CB3005AC052 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				59E65EAB29A73DC9005AC052 /* EditProfileApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		59E65EAD29A74FB1005AC052 /* Get User Detail Api */ = {
+			isa = PBXGroup;
+			children = (
+				59E65EAF29A74FC4005AC052 /* Api */,
+				59E65EAE29A74FBF005AC052 /* Model */,
+			);
+			path = "Get User Detail Api";
+			sourceTree = "<group>";
+		};
+		59E65EAE29A74FBF005AC052 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59E65EB029A74FDD005AC052 /* GetUserDetailsResponseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		59E65EAF29A74FC4005AC052 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				59E65EB229A75037005AC052 /* GetUserDetailsApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		59E65EB429A776DB005AC052 /* Get Reviews Api */ = {
+			isa = PBXGroup;
+			children = (
+				59E65EB629A77722005AC052 /* Api */,
+				59E65EB529A7771D005AC052 /* Model */,
+			);
+			path = "Get Reviews Api";
+			sourceTree = "<group>";
+		};
+		59E65EB529A7771D005AC052 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59E65EB729A7773E005AC052 /* GetReviewsResponseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		59E65EB629A77722005AC052 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				59E65EB929A779CD005AC052 /* GetReviewsApi.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -420,21 +606,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5924E6F929ACB490007E10B5 /* ForgotPasswordEmailScreen.swift in Sources */,
 				59109B3329A4E58C007D328A /* UserProfileScreen.swift in Sources */,
 				59849E4229A6162C0047373D /* LoginApi.swift in Sources */,
+				5924E6F529ACB1FD007E10B5 /* SendResetPasswordOTPResponseModel.swift in Sources */,
 				59ACA20229A5F20900EC229A /* NetworkConfigs.swift in Sources */,
+				5924E70729ACD288007E10B5 /* NewPasswordApi.swift in Sources */,
 				59A39CED29A6415D0087E6B1 /* AddProfileDataApi.swift in Sources */,
+				5924E70529ACD267007E10B5 /* NewPasswordResponseModel.swift in Sources */,
 				5943178E29A389DC007A28EC /* AppFonts.swift in Sources */,
 				59A39CDB29A62CEB0087E6B1 /* GetAllUsersResponseModel.swift in Sources */,
 				594317AC29A398C9007A28EC /* ForgotPasswordScreen.swift in Sources */,
+				59E65EBA29A779CD005AC052 /* GetReviewsApi.swift in Sources */,
 				59A39CEB29A6415D0087E6B1 /* AddProfileDataResponseModel.swift in Sources */,
 				5943179729A389EB007A28EC /* AppColors.swift in Sources */,
 				59ACA20B29A5F24E00EC229A /* RegisterApi.swift in Sources */,
+				5924E70029ACBD24007E10B5 /* VerifyOTPApi.swift in Sources */,
 				594317A629A38BEE007A28EC /* SignupScreen.swift in Sources */,
 				59A39CD629A6202E0087E6B1 /* getProfileApi.swift in Sources */,
 				597BE88529A4D9B200E014ED /* MainTabContainer.swift in Sources */,
 				59849E4129A6162C0047373D /* LoginResponseModel.swift in Sources */,
 				5943177F29A389AC007A28EC /* ContentView.swift in Sources */,
+				5924E6F729ACB23A007E10B5 /* SendResetPasswordOTPApi.swift in Sources */,
+				59E65EAA29A73CD0005AC052 /* EditProfileResponseModel.swift in Sources */,
 				597BE88129A4C69000E014ED /* EditProfileScreen.swift in Sources */,
 				5943179D29A389EB007A28EC /* ImageViewer.swift in Sources */,
 				59ACA20A29A5F24E00EC229A /* RegisterResponseModel.swift in Sources */,
@@ -447,13 +641,19 @@
 				5943179929A389EB007A28EC /* ImagePicker.swift in Sources */,
 				59ACA1FE29A5F1BF00EC229A /* AppData.swift in Sources */,
 				5943179C29A389EB007A28EC /* PinkButton.swift in Sources */,
+				59E65EB829A7773E005AC052 /* GetReviewsResponseModel.swift in Sources */,
 				5943179B29A389EB007A28EC /* SeekBar.swift in Sources */,
 				597BE88729A4DBBF00E014ED /* HomeScreen.swift in Sources */,
 				5943179829A389EB007A28EC /* AppImages.swift in Sources */,
 				5943177D29A389AC007A28EC /* Review_AppApp.swift in Sources */,
+				59E65EA529A7374D005AC052 /* LogoutScreen.swift in Sources */,
+				59E65EB329A75037005AC052 /* GetUserDetailsApi.swift in Sources */,
+				5924E6FE29ACBC0E007E10B5 /* VerifyOTPResponseModel.swift in Sources */,
 				5943C21B29A3A24B00586DE0 /* VerifyOTPScreen.swift in Sources */,
 				59A39CDD29A62DCF0087E6B1 /* GetAllUsersApi.swift in Sources */,
 				59ACA21529A5F8A600EC229A /* Constants.swift in Sources */,
+				59E65EAC29A73DC9005AC052 /* EditProfileApi.swift in Sources */,
+				59E65EB129A74FDD005AC052 /* GetUserDetailsResponseModel.swift in Sources */,
 				59A39CD529A6202E0087E6B1 /* getProfileResponseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

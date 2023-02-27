@@ -10,19 +10,40 @@ import SwiftUI
 struct VerifyOTPScreen: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel = ViewModel()
+    
+    @StateObject var verifyOTP = VerifyOTPApi()
+
     @State var isFocused = false
+    
+    @State var showToast : Bool = false
+    @State var toastMessage : String = ""
+    
+    @State var toEmailConfirmationScreen : Bool = false
+
+    
+    let  email : String
 
     let textBoxWidth = UIScreen.main.bounds.width / 8
     let textBoxHeight = UIScreen.main.bounds.width / 8
-    let spaceBetweenBoxes: CGFloat = 15
+    let spaceBetweenBoxes: CGFloat = 10
     let paddingOfBox: CGFloat = 1
     var textFieldOriginalWidth: CGFloat {
-        (textBoxWidth*6)+(spaceBetweenBoxes*3)+((paddingOfBox*2)*3)
+        (textBoxWidth*5)+(spaceBetweenBoxes*2)+((paddingOfBox*2)*3)
+        
     }
+    
+
+    
+   
+
     var body: some View {
         ZStack{
             Color.white
                 .ignoresSafeArea(edges: .bottom)
+            
+            NavigationLink(destination: ForgotPasswordScreen(), isActive: self.$toEmailConfirmationScreen){
+                EmptyView()
+            }
 
 
             VStack{
@@ -79,6 +100,8 @@ struct VerifyOTPScreen: View {
                             otpText(text: viewModel.otp3)
                             otpText(text: viewModel.otp4)
                             otpText(text: viewModel.otp5)
+                            otpText(text: viewModel.otp6)
+
                             
                         }
                         
@@ -92,7 +115,7 @@ struct VerifyOTPScreen: View {
                             .accentColor(.clear)
                             .background(Color.clear)
                             .onChange(of: self.viewModel.otpField) { newValue in
-                                self.viewModel.otpField = newValue.limit(limit : 5)
+                                self.viewModel.otpField = newValue.limit(limit : 6)
                             }
                     }
                     .padding(.top)
@@ -112,9 +135,91 @@ struct VerifyOTPScreen: View {
                 }
                 .padding(.top,20)
               
+                if(self.verifyOTP.isLoading){
+                    
+                    HStack{
+                        
+                        Spacer()
+                        
+                        ProgressView()
+                            .padding()
+                        
+                        Spacer()
+                        
+                    }.onDisappear {
+                        
+                        if(self.verifyOTP.isApiCallDone && self.verifyOTP.isApiCallSuccessful){
+                            
+                            if(self.verifyOTP.dataRetrivedSuccessfully){
+                                
+                                self.showToast = true
+                                self.toastMessage = "otp verified successfully"
+                                self.toEmailConfirmationScreen = true
+                                
+                            }
+                            
+                            
+                            else if(self.verifyOTP.apiResponse?.message == "Incorrect OTP"){
+                                
+                                
+                                self.showToast = true
+                                self.toastMessage = "incorrect otp"
+                                
+                                
+                            }
+                            
+                            else if(self.verifyOTP.apiResponse?.message == "OTP Expired."){
+                                
+                                self.showToast = true
+                                self.toastMessage = "otp expired"
+                                
+                                
+                            }
+                            
+                            else{
+                                
+                                self.showToast = true
+                                self.toastMessage = "something went wrong"
+                                
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        else if(self.verifyOTP.isApiCallDone && (!self.verifyOTP.isApiCallSuccessful)){
+                            
+                            self.showToast = true
+                            self.toastMessage = "Unable to access internet. Please check you internet connection and try again."
+                            
+                        }
+                    }
+                }
 
-                BlueButton(lable: "Confirm")
-                    .padding(.top,40)
+                else{
+                    
+                    Button(action: {
+                        
+                        
+                        if !(viewModel.otpField.isEmpty){
+                            
+                            self.verifyOTP.verifyOTP(otp: viewModel.otpField, email: self.email)
+                            
+                            print(viewModel.otpField)
+                            print(email)
+                            
+                        }
+                        
+                        
+                    }, label: {
+                        
+                        
+                        BlueButton(lable: "Confirm")
+                            .padding(.top,40)
+                        
+                    })
+                    
+                }
                
                 
                 Spacer()
@@ -123,6 +228,12 @@ struct VerifyOTPScreen: View {
             .padding(.trailing,20)
             .padding(.top,10)
             .padding(.bottom,10)
+            
+            
+            if(showToast){
+                Toast(isShowing: self.$showToast, message: self.toastMessage)
+            }
+
 
 
         }
@@ -186,6 +297,13 @@ class ViewModel: ObservableObject {
             return ""
         }
         return String(Array(otpField)[4])
+    }
+    
+    var otp6: String {
+        guard otpField.count >= 6 else {
+            return ""
+        }
+        return String(Array(otpField)[5])
     }
     
     

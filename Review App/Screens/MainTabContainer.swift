@@ -9,6 +9,13 @@ import SwiftUI
 
 struct MainTabContainer: View {
     @State var selectedTab : Int = 0
+    
+    @Binding var isUserLoggedIn : Bool
+   
+    
+    init(isUserLoggedIn : Binding<Bool>){
+        self._isUserLoggedIn = isUserLoggedIn
+    }
 
     var body: some View {
         ZStack{
@@ -20,7 +27,7 @@ struct MainTabContainer: View {
                 }
                 
                 else{
-                    MyProfileScreen()
+                    MyProfileScreen(isUserLoggedIn: self.$isUserLoggedIn)
                 }
                 
                 

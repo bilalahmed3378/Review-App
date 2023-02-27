@@ -38,7 +38,7 @@ struct CreateProfileScreen: View {
                 Color.white
                 .ignoresSafeArea(edges: .bottom)
             
-            NavigationLink( destination: MainTabContainer(), isActive: self.$toHome){
+            NavigationLink( destination: MainTabContainer(isUserLoggedIn: self.$toHome), isActive: self.$toHome){
                 EmptyView()
             }
            
@@ -233,6 +233,30 @@ struct CreateProfileScreen: View {
                     if(self.addProfileDataApi.isLoading){
                         ProgressView()
                             .padding(20)
+                            .onDisappear{
+                                
+                                if(self.addProfileDataApi.isApiCallDone && (!self.addProfileDataApi.isApiCallSuccessful)){
+                                    self.toastMessage = "Unable to access internet. Please check your internet connection and try again."
+                                    self.showToast = true
+                                }
+                                else if (self.addProfileDataApi.isApiCallDone && self.addProfileDataApi.isApiCallSuccessful  && (!self.addProfileDataApi.addedSuccessful)){
+                                    self.toastMessage = "Unable to add profile. Please try again later."
+                                    self.showToast = true
+                                }
+                                else if(self.addProfileDataApi.isApiCallDone && self.addProfileDataApi.isApiCallSuccessful  && self.addProfileDataApi.addedSuccessful){
+                                    AppData().profileSetup()
+                                    self.toastMessage = "Profile Created successfully"
+                                    self.showToast = true
+                                    
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                            self.toHome = true
+                                        }
+                                    
+                                  
+                                    
+                                }
+                                
+                            }
                     }
                     else{
                         Button(action: {
@@ -300,34 +324,14 @@ struct CreateProfileScreen: View {
                             BlueButton(lable: "Create Profile")
                                 .padding(.top,20)
                                 .padding(.bottom,10)
-                                .onAppear{
-                                    
-                                    if(self.addProfileDataApi.isApiCallDone && (!self.addProfileDataApi.isApiCallSuccessful)){
-                                        self.toastMessage = "Unable to access internet. Please check your internet connection and try again."
-                                        self.showToast = true
-                                    }
-                                    else if (self.addProfileDataApi.isApiCallDone && self.addProfileDataApi.isApiCallSuccessful  && (!self.addProfileDataApi.addedSuccessful)){
-                                        self.toastMessage = "Unable to add profile. Please try again later."
-                                        self.showToast = true
-                                    }
-                                    else if(self.addProfileDataApi.isApiCallDone && self.addProfileDataApi.isApiCallSuccessful  && self.addProfileDataApi.addedSuccessful){
-                                        AppData().profileSetup()
-                                        self.toastMessage = "Profile Created successfully"
-                                        self.showToast = true
-                                        
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                                self.toHome = true
-                                            }
-                                        
-                                      
-                                        
-                                    }
-                                    
-                                }
+                                
+                               
                             
                         
                       
                         })
+                        .disabled(showToast == true)
+
                       
                     }
                       

@@ -35,9 +35,7 @@ struct SignupScreen: View {
             Color.white
                 .ignoresSafeArea(edges: .bottom)
             
-            NavigationLink(destination: VerifyOTPScreen(), isActive: self.$pushToOTP){
-                EmptyView()
-            }
+          
 
             VStack{
                 Spacer()
@@ -49,6 +47,7 @@ struct SignupScreen: View {
                         .fontWeight(.bold)
                     Spacer()
                 }
+                .padding(.top,10)
                
                 HStack{
                     Text("Start turning your ideas into reality")
@@ -154,8 +153,8 @@ struct SignupScreen: View {
                             if(self.signupApi.isApiCallDone && self.signupApi.isApiCallSuccessful){
                                 
                                 if(self.signupApi.registerSuccessful){
-                                    
-                                    self.pushToOTP = true
+                                    self.pushToSignup = false
+
                                 }
                                 else if (self.signupApi.emailAlreadyInUse){
                                     self.toastMessage = "This email already taken. Please try different email."

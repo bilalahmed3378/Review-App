@@ -9,17 +9,35 @@ import SwiftUI
 
 struct ForgotPasswordScreen: View {
     @Environment(\.presentationMode) var presentationMode
+    
+
+    @StateObject var setNewPasswordApi : NewPasswordApi = NewPasswordApi()
+
+    @State var showToast : Bool = false
+    
+    
+    @State var toastMessage : String = ""
 
     @State var passwordConfirm  = ""
     @State var password  = ""
     @State var showPassword : Bool = true
     @State var showConfirmPassword : Bool = true
+    
+
+    @State var toHome : Bool = true
+
+    
+    
+
 
     var body: some View {
         ZStack{
             Color.white
                 .ignoresSafeArea(edges: .bottom)
 
+            NavigationLink(destination: LoginSwitcher(), isActive: self.$toHome){
+                EmptyView()
+            }
 
             VStack{
                 
@@ -182,14 +200,74 @@ struct ForgotPasswordScreen: View {
                     .padding(.top,15)
                 }
               
+                
+                if(self.setNewPasswordApi.isLoading){
+                    ProgressView()
+                        .padding(20)
+                        .onDisappear{
+                            if(self.setNewPasswordApi.isApiCallDone && self.setNewPasswordApi.isApiCallSuccessful){
+                                
+                                if(self.setNewPasswordApi.dataRetrivedSuccessfully){
+                                    self.toastMessage = "Password Updated"
+                                    self.showToast = true
+                                    
+                                    self.toHome = false
+                                }
+                                else{
+                                    self.toastMessage = "Password could not be updated"
+                                    self.showToast = true
+                                }
+                                
+                            }
+                            else if(self.setNewPasswordApi.isApiCallDone && (!self.setNewPasswordApi.isApiCallSuccessful)){
+                                self.toastMessage = "Unable to access internet. Please check you internet connection and try again."
+                                self.showToast = true
+                            }
+                        }
+                }
 
-                NavigationLink(destination: {
-                    VerifyOTPScreen()
-                }, label: {
-                    BlueButton(lable: "Confirm")
-                        .padding(.top,30)
+                else{
+                    Button(action: {
+                        
+                        if (self.password.isEmpty){
+                            
+                            self.showToast = true
+                            self.toastMessage = "Please enter password."
+                            
+                        }
+                        
+                        else if !(self.password == self.passwordConfirm){
+                            
+                            self.showToast = true
+                            self.toastMessage = "Passwords do not match."
+                            
+                            
+                        }
+                        
+                        else if !(self.isValidPassword()){
+                            self.toastMessage = "Password must be at least 8 characters long and must contains one special charater and number."
+                            self.showToast = true
+                        }
+                        
+                        
+                        else{
+                            
+                            self.setNewPasswordApi.password(password: self.password)
+                            
+                        }
+                      
+                    }, label: {
+                        BlueButton(lable: "Confirm")
+                            .padding(.top,30)
+                            
+                       
+                    })
+                    .disabled(showToast == true)
+                }
+               
+              
                    
-                })
+                
                
                 
                 Spacer()
@@ -198,10 +276,26 @@ struct ForgotPasswordScreen: View {
             .padding(.trailing,20)
             .padding(.top,10)
             .padding(.bottom,10)
+            
+            if(self.showToast){
+                Toast(isShowing: self.$showToast, message: self.toastMessage)
+            }
 
 
         }
         .navigationBarHidden(true)
+    }
+    
+    func isValidPassword() -> Bool {
+        // least one digit
+        // least one lowercase
+        // least one symbol
+        //  min 8 characters total
+        let password = self.password.trimmingCharacters(in: CharacterSet.whitespaces)
+        let passwordRegx = "^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&<>*~:`-]).{8,}$"
+        let passwordCheck = NSPredicate(format: "SELF MATCHES %@",passwordRegx)
+        return passwordCheck.evaluate(with: password)
+        
     }
 }
 
