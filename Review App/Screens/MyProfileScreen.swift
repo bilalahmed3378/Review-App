@@ -413,7 +413,7 @@ struct MyProfileScreen: View {
                             
                             Spacer()
                             
-                            Text("Unable to get support tickets.")
+                            Text("Unable to get profile.")
                                 .font(.system(size: 14))
                                 .foregroundColor(.black)
                             

@@ -230,6 +230,36 @@ struct HomeScreen: View {
                     }
                 }
                 
+                else{
+                    
+                    VStack{
+                        
+                        Spacer()
+                        
+                        Text("Unable to get users.")
+                            .font(.system(size: 14))
+                            .foregroundColor(.black)
+                        
+                        Button(action: {
+                            withAnimation{
+                                self.getAllUsers.getAllUsers()
+                            }
+                        }){
+                            Text("Try Agin")
+                                .font(.system(size: 14))
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(RoundedRectangle(cornerRadius: 5).fill(.blue))
+                            
+                        }
+                        .padding(.top,30)
+                        
+                        Spacer()
+                        
+                    }
+                    
+                }
+                
               
             }
         }

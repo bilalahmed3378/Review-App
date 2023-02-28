@@ -27,6 +27,8 @@ struct NetworkConfig {
     static let sendResetPasswordOTP = "profile/passwordResetOTP"
     static let verifyResetPasswordOTP = "profile/passwordResetVerify"
     static let newPassword = "profile/resetPassword"
+    static let userProfileDetail = "profile/profileById"
+
 
 
 
