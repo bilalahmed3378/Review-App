@@ -28,6 +28,8 @@ struct NetworkConfig {
     static let verifyResetPasswordOTP = "profile/passwordResetVerify"
     static let newPassword = "profile/resetPassword"
     static let userProfileDetail = "profile/profileById"
+    static let getReviewById = "profile/getReviewById"
+
 
 
 

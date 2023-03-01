@@ -52,10 +52,25 @@ struct LoginDocsModel : Codable {
     let lastname: String
     let profileImage: String
     let tagline: String
+    let emailVerified : Bool
+    let profileSetup : Bool
    
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        do{
+            emailVerified = try container.decode(Bool?.self, forKey: .emailVerified) ?? false
+        } catch{
+            emailVerified = false
+        }
+        
+        
+         do{
+             profileSetup = try container.decode(Bool?.self, forKey: .profileSetup) ?? false
+         } catch{
+             profileSetup = false
+         }
         
         do{
             notify = try container.decode(LoginNotifyModel?.self, forKey: .notify) ?? nil

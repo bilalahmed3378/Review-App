@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isUserLoggedIn : Bool = true
     var body: some View {
         NavigationView{
-           LoginSwitcher()
+            MainTabContainer(isUserLoggedIn: self.$isUserLoggedIn )
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

@@ -188,7 +188,7 @@ struct LoginScreen: View {
                             .frame(width: 16, height: 16)
                             .foregroundColor(.gray)
                             .onTapGesture{
-                                self.isChecked = true
+                                self.remmberMe = true
                             }
                     }
                     
@@ -216,7 +216,7 @@ struct LoginScreen: View {
                                    }
                                    
                                    
-                                   if(self.loginApi.apiResponse!.docs != nil){
+                                   if(self.loginApi.apiResponse!.docs!.profileSetup == true){
                                        
                                        AppData().setRemeberMe(rememberMe: self.remmberMe)
                                        AppData().saveUserDetails(user: self.loginApi.apiResponse!.docs!)

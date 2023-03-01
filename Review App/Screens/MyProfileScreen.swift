@@ -83,9 +83,11 @@ struct MyProfileScreen: View {
                                 .onDisappear{
                                     
 //                                        self.getReviews.getReviews(id: self.getProfileApi.apiResponse!.docs!._id)
-                                    self.getReviews.getReviews(id: "63edd1c7d0f679057597fe19")
-
+                                    if !(self.getProfileApi.apiResponse!.docs!._id.isEmpty){
+                                        self.getReviews.getReviews(id: self.getProfileApi.apiResponse!.docs!._id)
+                                    } 
                                     
+                                   
                                     
                                     
                                 }
@@ -259,6 +261,8 @@ struct MyProfileScreen: View {
 
 
                                 }
+                                
+                                
                                 
                                 else if(self.getReviews.isApiCallDone && (!self.getReviews.isApiCallSuccessful)){
                                     
