@@ -230,7 +230,7 @@ struct MyProfileScreen: View {
                                 
                                 HStack{
                                     
-                                    Text("Review (1045)")
+                                    Text("Reviews")
                                         .foregroundColor(.black)
                                         .font(AppFonts.ceraPro_16)
                                         .fontWeight(.bold)

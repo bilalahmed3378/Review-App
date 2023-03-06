@@ -53,6 +53,8 @@
 		598DF54B29B5B5400036501F /* VerifyOTPEmailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598DF54A29B5B5400036501F /* VerifyOTPEmailScreen.swift */; };
 		598DF55029B5B8CA0036501F /* VerifyOTPEmailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598DF54F29B5B8CA0036501F /* VerifyOTPEmailResponseModel.swift */; };
 		598DF55229B5B98F0036501F /* VerifyOTPEmailApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598DF55129B5B98F0036501F /* VerifyOTPEmailApi.swift */; };
+		599594C329B5FEBF00D50A4E /* UpdateReviewResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599594C229B5FEBF00D50A4E /* UpdateReviewResponseModel.swift */; };
+		599594C529B5FEF400D50A4E /* UpdateReviewApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599594C429B5FEF400D50A4E /* UpdateReviewApi.swift */; };
 		59A39CD529A6202E0087E6B1 /* getProfileResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A39CD229A6202E0087E6B1 /* getProfileResponseModel.swift */; };
 		59A39CD629A6202E0087E6B1 /* getProfileApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A39CD429A6202E0087E6B1 /* getProfileApi.swift */; };
 		59A39CDB29A62CEB0087E6B1 /* GetAllUsersResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A39CDA29A62CEB0087E6B1 /* GetAllUsersResponseModel.swift */; };
@@ -126,6 +128,8 @@
 		598DF54A29B5B5400036501F /* VerifyOTPEmailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPEmailScreen.swift; sourceTree = "<group>"; };
 		598DF54F29B5B8CA0036501F /* VerifyOTPEmailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPEmailResponseModel.swift; sourceTree = "<group>"; };
 		598DF55129B5B98F0036501F /* VerifyOTPEmailApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPEmailApi.swift; sourceTree = "<group>"; };
+		599594C229B5FEBF00D50A4E /* UpdateReviewResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateReviewResponseModel.swift; sourceTree = "<group>"; };
+		599594C429B5FEF400D50A4E /* UpdateReviewApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateReviewApi.swift; sourceTree = "<group>"; };
 		59A39CD229A6202E0087E6B1 /* getProfileResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getProfileResponseModel.swift; sourceTree = "<group>"; };
 		59A39CD429A6202E0087E6B1 /* getProfileApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getProfileApi.swift; sourceTree = "<group>"; };
 		59A39CDA29A62CEB0087E6B1 /* GetAllUsersResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllUsersResponseModel.swift; sourceTree = "<group>"; };
@@ -454,6 +458,31 @@
 			path = Api;
 			sourceTree = "<group>";
 		};
+		599594BF29B5FE8500D50A4E /* Update Review Api */ = {
+			isa = PBXGroup;
+			children = (
+				599594C129B5FEA500D50A4E /* Api */,
+				599594C029B5FE9300D50A4E /* Model */,
+			);
+			path = "Update Review Api";
+			sourceTree = "<group>";
+		};
+		599594C029B5FE9300D50A4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				599594C229B5FEBF00D50A4E /* UpdateReviewResponseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		599594C129B5FEA500D50A4E /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				599594C429B5FEF400D50A4E /* UpdateReviewApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
 		59A39CD029A6202E0087E6B1 /* Get Profile Api */ = {
 			isa = PBXGroup;
 			children = (
@@ -532,6 +561,7 @@
 		59ACA1FF29A5F1DF00EC229A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				599594BF29B5FE8500D50A4E /* Update Review Api */,
 				598DF54C29B5B8900036501F /* VerifyOTPEmailApi */,
 				598DF54329B5B33C0036501F /* SendOTPVerifyEmailApi */,
 				5985453B29B1FDE500FB52AB /* Write Review Api */,
@@ -809,6 +839,7 @@
 				59A39CDB29A62CEB0087E6B1 /* GetAllUsersResponseModel.swift in Sources */,
 				594317AC29A398C9007A28EC /* ForgotPasswordScreen.swift in Sources */,
 				59E65EBA29A779CD005AC052 /* GetReviewsApi.swift in Sources */,
+				599594C329B5FEBF00D50A4E /* UpdateReviewResponseModel.swift in Sources */,
 				598DF54229B5B2FA0036501F /* SendOTPVerifyEmailScreen.swift in Sources */,
 				598DF54B29B5B5400036501F /* VerifyOTPEmailScreen.swift in Sources */,
 				59A39CEB29A6415D0087E6B1 /* AddProfileDataResponseModel.swift in Sources */,
@@ -829,6 +860,7 @@
 				597BE88129A4C69000E014ED /* EditProfileScreen.swift in Sources */,
 				5943179D29A389EB007A28EC /* ImageViewer.swift in Sources */,
 				59ACA20A29A5F24E00EC229A /* RegisterResponseModel.swift in Sources */,
+				599594C529B5FEF400D50A4E /* UpdateReviewApi.swift in Sources */,
 				594317AA29A39628007A28EC /* LoginSwicher.swift in Sources */,
 				59ACA20D29A5F5FC00EC229A /* Toast.swift in Sources */,
 				594317A829A394BB007A28EC /* LoginScreen.swift in Sources */,

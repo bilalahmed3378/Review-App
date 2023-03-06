@@ -34,6 +34,8 @@ struct NetworkConfig {
     static let createReview = "profile/createReview"
     static let emailOTP = "profile/emailOTP"
     static let emailVerify = "profile/emailVerify"
+    static let updateReview = "profile/updateReview"
+
 
 
 

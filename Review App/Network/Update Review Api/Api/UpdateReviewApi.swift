@@ -1,25 +1,25 @@
 //
-//  PostReplyOnReviewApi.swift
+//  UpdateReviewApi.swift
 //  Review App
 //
-//  Created by Bilal Ahmed on 02/03/2023.
+//  Created by Bilal Ahmed on 06/03/2023.
 //
 
 import Foundation
 
 
-class PostReplyOnReviewApi : ObservableObject{
+class UpdateReviewApi : ObservableObject{
     
     @Published var isLoading = false
     @Published var isApiCallDone = false
     @Published var isApiCallSuccessful = false
     @Published var dataRetrivedSuccessfully = false
-    @Published var apiResponse :  PostReplyOnReviewResponseModel?
+    @Published var apiResponse :  UpdateReviewResponseModel?
     
     
     
     
-    func addReply(replyFor : String, reply : String){
+    func updateReview(reviewId : String, message : String, ratings : Int){
         
         self.isLoading = true
         self.isApiCallSuccessful = true
@@ -32,12 +32,12 @@ class PostReplyOnReviewApi : ObservableObject{
         
         let token = AppData().getBearerToken()
         
-        let data : Data = "replyId=\(replyFor)&reply=\(reply)".data(using: .utf8)!
+        let data : Data = "reviewId=\(reviewId)&message=\(message)&ratings=\(ratings)".data(using: .utf8)!
 
         
         //Create request
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = "PUT"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue(NetworkConfig.secretKey, forHTTPHeaderField: "secretKey")
@@ -64,17 +64,17 @@ class PostReplyOnReviewApi : ObservableObject{
             
             
             do{
-                print("Got add reply response succesfully.....")
+                print("Got update review response succesfully.....")
                 DispatchQueue.main.async {
                     self.isApiCallDone = true
                 }
-                let main = try JSONDecoder().decode(PostReplyOnReviewResponseModel.self, from: data)
+                let main = try JSONDecoder().decode(UpdateReviewResponseModel.self, from: data)
                 
                 DispatchQueue.main.async {
                     self.apiResponse = main
                     self.isApiCallSuccessful  = true
                     
-                    if(main.message == " Reply Given Successfully "){
+                    if(main.message == "Review Updated Successfully"){
                         
 //                        if(main.docs != nil){
                             

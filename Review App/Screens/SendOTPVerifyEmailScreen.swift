@@ -44,10 +44,6 @@ struct SendOTPVerifyEmailScreen : View {
 
             VStack{
                 
-              
-                
-                
-                
                 
                 //screen name
                 HStack{

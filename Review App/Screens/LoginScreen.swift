@@ -177,14 +177,14 @@ struct LoginScreen: View {
                     .padding(.top,20)
                 }
                 HStack{
-                    if(self.isChecked){
+                    if(self.remmberMe){
                         Image(systemName: "checkmark.square.fill")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 16, height: 16)
                             .foregroundColor(AppColors.appPrimaryColor)
                             .onTapGesture{
-                                self.isChecked = false
+                                self.remmberMe = false
                             }
                     }
                     else{

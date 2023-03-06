@@ -108,6 +108,8 @@ struct HomeScreen: View {
                                     
                                   
                                     AllUsers(userList: self.getAllUsers.apiResponse!.docs[index])
+                                        
+                                  
                                   
                                     
                                    
@@ -188,6 +190,8 @@ struct HomeScreen: View {
             self.getAllUsers.getAllUsers()
         }
     }
+    
+   
 }
 
 
@@ -282,4 +286,6 @@ struct AllUsers : View{
         
            
     }
+    
+    
 }
