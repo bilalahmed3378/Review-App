@@ -12,6 +12,9 @@ struct MyProfileScreen: View {
     
     @StateObject var getProfileApi = GetProfileApi()
     @StateObject var getReviews = GetReviewsApi()
+    
+    @State var reviewsList: [GetReviewsdocsModel] = []
+
 
     let dateFormatter = ISO8601DateFormatter()
 
@@ -84,7 +87,7 @@ struct MyProfileScreen: View {
                                     
 //                                        self.getReviews.getReviews(id: self.getProfileApi.apiResponse!.docs!._id)
                                     if !(self.getProfileApi.apiResponse!.docs!._id.isEmpty){
-                                        self.getReviews.getReviews(id: self.getProfileApi.apiResponse!.docs!._id)
+                                        self.getReviews.getReviews(id: self.getProfileApi.apiResponse!.docs!._id, reviewList: self.$reviewsList)
                                     } 
                                     
                                    
@@ -278,7 +281,7 @@ struct MyProfileScreen: View {
                                         Button(action: {
                                             withAnimation{
                                                 if !(self.getProfileApi.apiResponse!.docs!._id.isEmpty){
-                                                    self.getReviews.getReviews(id: self.getProfileApi.apiResponse!.docs!._id)
+                                                    self.getReviews.getReviews(id: self.getProfileApi.apiResponse!.docs!._id, reviewList: self.$reviewsList)
                                                 }                                            }
                                         }){
                                             Text("Try Agin")
@@ -385,7 +388,7 @@ struct MyProfileScreen: View {
                                         Button(action: {
                                             withAnimation{
                                                 if !(self.getProfileApi.apiResponse!.docs!._id.isEmpty){
-                                                    self.getReviews.getReviews(id: self.getProfileApi.apiResponse!.docs!._id)
+                                                    self.getReviews.getReviews(id: self.getProfileApi.apiResponse!.docs!._id, reviewList: self.$reviewsList)
                                                 }                                            }
                                         }){
                                             Text("Try Agin")
@@ -478,13 +481,8 @@ struct MyProfileScreen: View {
         .navigationBarHidden(true)
         .onAppear{
             
-            if(self.isLoadingFirstTime){
-                
                 self.getProfileApi.getProfile()
-                
-                self.isLoadingFirstTime = false
-                
-            }
+              
         }
     }
 }

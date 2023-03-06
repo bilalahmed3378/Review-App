@@ -1,19 +1,19 @@
 //
-//  GetReplyOnRatingResponseModel.swift
+//  WriteReviewResponseModel.swift
 //  Review App
 //
-//  Created by Bilal Ahmed on 01/03/2023.
+//  Created by Bilal Ahmed on 03/03/2023.
 //
 
 import Foundation
 
 
-struct GetReplyOnRatingResponseModel : Codable {
+struct WriteReviewResponseModel : Codable {
     
     
     
        let message : String
-       let docs: GetReplyOnRatingDocsModel?
+       let review: WriteReviewReviewModel?
        
        init(from decoder: Decoder) throws {
            
@@ -28,9 +28,9 @@ struct GetReplyOnRatingResponseModel : Codable {
            }
            
            do{
-               docs = try container.decode(GetReplyOnRatingDocsModel?.self, forKey: .docs) ?? nil
+               review = try container.decode(WriteReviewReviewModel?.self, forKey: .review) ?? nil
            } catch{
-               docs = nil
+               review = nil
            }
            
            
@@ -38,17 +38,19 @@ struct GetReplyOnRatingResponseModel : Codable {
        }
 }
 
-struct GetReplyOnRatingDocsModel : Codable  {
+struct WriteReviewReviewModel : Codable  {
     
     let _id: String
-    let reviewerId: GetReplyOnRatingReviewerFromModel?
-    let reviewFor: GetReplyOnRatingReviewForModel?
+    let reviewerId: WriteReviewReviewerIdModel?
+    let reviewFor: WriteReviewReviewForModel?
     let ratings: Int
     let message: String
     let replyHistory: [String]
     let createdAt: String
     let updatedAt: String
-
+    
+    
+   
 
     init(from decoder: Decoder) throws {
         
@@ -63,13 +65,13 @@ struct GetReplyOnRatingDocsModel : Codable  {
         
       
         do{
-            reviewerId = try container.decode(GetReplyOnRatingReviewerFromModel?.self, forKey: .reviewerId) ?? nil
+            reviewerId = try container.decode(WriteReviewReviewerIdModel?.self, forKey: .reviewerId) ?? nil
         } catch{
             reviewerId = nil
         }
         
         do{
-            reviewFor = try container.decode(GetReplyOnRatingReviewForModel?.self, forKey: .reviewFor) ?? nil
+            reviewFor = try container.decode(WriteReviewReviewForModel?.self, forKey: .reviewFor) ?? nil
         } catch{
             reviewFor = nil
         }
@@ -110,7 +112,8 @@ struct GetReplyOnRatingDocsModel : Codable  {
     }
 }
 
-struct GetReplyOnRatingReviewerFromModel : Codable  {
+
+struct WriteReviewReviewerIdModel : Codable  {
     
     let _id: String
     let createdAt: String
@@ -202,7 +205,7 @@ struct GetReplyOnRatingReviewerFromModel : Codable  {
 }
 
 
-struct GetReplyOnRatingReviewForModel : Codable  {
+struct WriteReviewReviewForModel : Codable  {
     
     let _id: String
     let createdAt: String
@@ -292,7 +295,6 @@ struct GetReplyOnRatingReviewForModel : Codable  {
        
     }
 }
-
 
 
 

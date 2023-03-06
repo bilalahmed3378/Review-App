@@ -16,7 +16,7 @@ struct LoginSwitcher: View {
     var body: some View {
         ZStack{
             if(self.isUserLoggedIn){
-                
+                MainTabContainer(isUserLoggedIn: self.$isUserLoggedIn)
             }
             else{
                 if(self.isLoginView){

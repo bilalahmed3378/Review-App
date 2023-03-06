@@ -11,7 +11,8 @@ struct ContentView: View {
     @State var isUserLoggedIn : Bool = true
     var body: some View {
         NavigationView{
-            MainTabContainer(isUserLoggedIn: self.$isUserLoggedIn )
+LoginSwitcher()
+            
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

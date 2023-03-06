@@ -36,7 +36,7 @@ class AddProfileApi : ObservableObject{
         
         var formToRequest = MultipartForm(parts: [
             MultipartForm.Part(name: "firstname", value: firstname),
-            MultipartForm.Part(name: "lastname", value: firstname),
+            MultipartForm.Part(name: "lastname", value: lastname),
             MultipartForm.Part(name: "tagline", value: tagline),
             MultipartForm.Part(name: "description", value: description),
             MultipartForm.Part(name: "profileImage", data: profileImage , filename: "user_image_\(user_id)"),

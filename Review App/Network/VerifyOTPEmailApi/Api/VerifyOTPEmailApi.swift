@@ -1,25 +1,27 @@
 //
-//  GetReviewsApi.swift
+//  VerifyOTPEmailApi.swift
 //  Review App
 //
-//  Created by Bilal Ahmed on 23/02/2023.
+//  Created by Bilal Ahmed on 06/03/2023.
 //
 
 import Foundation
-import SwiftUI
 
-class GetReviewsApi : ObservableObject{
+
+class VerifyOTPEmailApi : ObservableObject{
     
     @Published var isLoading = false
     @Published var isApiCallDone = false
     @Published var isApiCallSuccessful = false
     @Published var dataRetrivedSuccessfully = false
-    @Published var apiResponse :  GetReviewsResponseModel?
+    @Published var apiResponse :  VerifyOTPEmailResponseModel?
+    @Published var incorrectOTP = false
+
     
     
     
     
-    func getReviews(id : String, reviewList : Binding<[GetReviewsdocsModel]>){
+    func verifyOTP(otp : String){
         
         self.isLoading = true
         self.isApiCallSuccessful = true
@@ -27,8 +29,9 @@ class GetReviewsApi : ObservableObject{
         self.isApiCallDone = false
         
         //Create url
-        guard let url = URL(string: NetworkConfig.baseUrl + NetworkConfig.getReviews + "?reviewFor=\(id)" ) else {return}
+        guard let url = URL(string: NetworkConfig.baseUrl + NetworkConfig.emailVerify + "/\(otp)" ) else {return}
         
+        print(url)
         
         let token = AppData().getBearerToken()
         
@@ -59,32 +62,22 @@ class GetReviewsApi : ObservableObject{
             
             
             do{
-                print("Got view Reviews response succesfully.....")
+                print("Got verify otp response succesfully.....")
                 DispatchQueue.main.async {
                     self.isApiCallDone = true
                 }
-                let main = try JSONDecoder().decode(GetReviewsResponseModel.self, from: data)
+                let main = try JSONDecoder().decode(VerifyOTPEmailResponseModel.self, from: data)
                 
                 DispatchQueue.main.async {
                     self.apiResponse = main
                     self.isApiCallSuccessful  = true
                     
-                    if(main.message == "OK"){
+                    if(main.message == "Email Verified Successfully"){
                         
-                        if(main.docs != nil){
-                            
                             self.dataRetrivedSuccessfully = true
                             
-                            reviewList.wrappedValue.append(contentsOf: self.apiResponse!.docs!)
-                        }
-                        else{
-                            self.dataRetrivedSuccessfully = false
-                            
-                        }
-                        
-                        
                     }
-                    
+                   
                     else{
                         self.dataRetrivedSuccessfully = false
                     }

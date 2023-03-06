@@ -29,6 +29,11 @@ struct NetworkConfig {
     static let newPassword = "profile/resetPassword"
     static let userProfileDetail = "profile/profileById"
     static let getReviewById = "profile/getReviewById"
+    static let reply = "profile/reply"
+    static let dltComment = "profile/dltComment"
+    static let createReview = "profile/createReview"
+    static let emailOTP = "profile/emailOTP"
+    static let emailVerify = "profile/emailVerify"
 
 
 
@@ -37,12 +42,5 @@ struct NetworkConfig {
 
 
 
-
-
-
-
-    
-    
-    
 
 }

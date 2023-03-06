@@ -8,6 +8,7 @@
 import Foundation
 import MultipartForm
 import UIKit
+import SwiftUI
 
 
 class EditProfileApi : ObservableObject{
@@ -18,39 +19,53 @@ class EditProfileApi : ObservableObject{
     @Published var addedSuccessful = false
     @Published var apiResponse :  EditProfileResponseModel?
     
-
     
-
     
-    func editUserProfileData(firstname : String , lastname : String , tagline : String , description : String , profileImage : Data , coverImage : Data){
+    
+    
+    func editUserProfileData(firstname : String , lastname : String , tagline : String , description : String , profileImage : UIImage? = nil , coverImage : UIImage? = nil){
         
         self.isLoading = true
         self.isApiCallSuccessful = true
         self.addedSuccessful = false
         self.isApiCallDone = false
         
-            //Create url
+        //Create url
         guard let url = URL(string: NetworkConfig.baseUrl + NetworkConfig.updateProfile ) else {return}
         
         let user_id = AppData().getUserId()
         
-        var formToRequest = MultipartForm(parts: [
-            MultipartForm.Part(name: "firstname", value: firstname),
-            MultipartForm.Part(name: "lastname", value: firstname),
-            MultipartForm.Part(name: "tagline", value: tagline),
-            MultipartForm.Part(name: "description", value: description),
-            MultipartForm.Part(name: "profileImage", data: profileImage , filename: "user_image_\(user_id)"),
-            MultipartForm.Part(name: "coverImage", data: coverImage , filename: "cover_image_\(user_id)")
-
-          
-          
-        ])
+        var formToRequest = MultipartForm()
         
-       
+        formToRequest.parts.append(MultipartForm.Part(name: "firstname", value: firstname))
+        formToRequest.parts.append(MultipartForm.Part(name: "lastname", value: lastname))
+        formToRequest.parts.append(MultipartForm.Part(name: "tagline", value: tagline))
+        formToRequest.parts.append(MultipartForm.Part(name: "description", value: description))
+        
+        if(profileImage != nil){
+            
+
+            let imageData  = profileImage!.jpegData(compressionQuality: 1)
+
+            
+            formToRequest.parts.append(MultipartForm.Part(name: "profileImage", data: imageData! , filename: "user_image_\(user_id)"))
+            
+        }
+        
+        if(coverImage != nil){
+            
+            let imageData  = coverImage!.jpegData(compressionQuality: 1)
+            
+            formToRequest.parts.append(MultipartForm.Part(name: "coverImage", data: imageData! , filename: "cover_image_\(user_id)"))
+            
+        }
+        
+        
+        
         
         let token = AppData().getBearerToken()
         
-            //Create request
+        //Create request
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
         request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
@@ -62,9 +77,9 @@ class EditProfileApi : ObservableObject{
         
         
         
-            //:end
-    
-
+        //:end
+        
+        
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
@@ -76,7 +91,7 @@ class EditProfileApi : ObservableObject{
                 }
                 return
             }
-                //If sucess
+            //If sucess
             
             
             do{
@@ -97,7 +112,7 @@ class EditProfileApi : ObservableObject{
                             print("register data null")
                         }
                     }
-                   
+                    
                     self.isLoading = false
                 }
             }catch{  // if error
@@ -117,7 +132,7 @@ class EditProfileApi : ObservableObject{
         task.resume()
     }
     
- 
+    
     
 }
 

@@ -1,19 +1,18 @@
 //
-//  GetReplyOnRatingResponseModel.swift
+//  PostReplyOnReviewResponseModel.swift
 //  Review App
 //
-//  Created by Bilal Ahmed on 01/03/2023.
+//  Created by Bilal Ahmed on 02/03/2023.
 //
 
 import Foundation
 
-
-struct GetReplyOnRatingResponseModel : Codable {
+struct PostReplyOnReviewResponseModel : Codable {
     
     
     
        let message : String
-       let docs: GetReplyOnRatingDocsModel?
+       let docs: PostReplyOnReviewDocsModel?
        
        init(from decoder: Decoder) throws {
            
@@ -28,7 +27,7 @@ struct GetReplyOnRatingResponseModel : Codable {
            }
            
            do{
-               docs = try container.decode(GetReplyOnRatingDocsModel?.self, forKey: .docs) ?? nil
+               docs = try container.decode(PostReplyOnReviewDocsModel?.self, forKey: .docs) ?? nil
            } catch{
                docs = nil
            }
@@ -38,11 +37,11 @@ struct GetReplyOnRatingResponseModel : Codable {
        }
 }
 
-struct GetReplyOnRatingDocsModel : Codable  {
+struct PostReplyOnReviewDocsModel : Codable  {
     
     let _id: String
-    let reviewerId: GetReplyOnRatingReviewerFromModel?
-    let reviewFor: GetReplyOnRatingReviewForModel?
+    let reviewerId: PostReplyOnReviewReviewerIdModel?
+    let reviewFor: PostReplyOnReviewReviewForModel?
     let ratings: Int
     let message: String
     let replyHistory: [String]
@@ -63,13 +62,13 @@ struct GetReplyOnRatingDocsModel : Codable  {
         
       
         do{
-            reviewerId = try container.decode(GetReplyOnRatingReviewerFromModel?.self, forKey: .reviewerId) ?? nil
+            reviewerId = try container.decode(PostReplyOnReviewReviewerIdModel?.self, forKey: .reviewerId) ?? nil
         } catch{
             reviewerId = nil
         }
         
         do{
-            reviewFor = try container.decode(GetReplyOnRatingReviewForModel?.self, forKey: .reviewFor) ?? nil
+            reviewFor = try container.decode(PostReplyOnReviewReviewForModel?.self, forKey: .reviewFor) ?? nil
         } catch{
             reviewFor = nil
         }
@@ -110,7 +109,7 @@ struct GetReplyOnRatingDocsModel : Codable  {
     }
 }
 
-struct GetReplyOnRatingReviewerFromModel : Codable  {
+struct PostReplyOnReviewReviewerIdModel : Codable  {
     
     let _id: String
     let createdAt: String
@@ -202,7 +201,7 @@ struct GetReplyOnRatingReviewerFromModel : Codable  {
 }
 
 
-struct GetReplyOnRatingReviewForModel : Codable  {
+struct PostReplyOnReviewReviewForModel : Codable  {
     
     let _id: String
     let createdAt: String
@@ -292,7 +291,3 @@ struct GetReplyOnRatingReviewForModel : Codable  {
        
     }
 }
-
-
-
-

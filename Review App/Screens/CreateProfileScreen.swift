@@ -30,6 +30,13 @@ struct CreateProfileScreen: View {
     @State var showBottomSheet: Bool = false
 
     @State var isProfileImage : Bool = false
+    
+    @Binding var isUserLoggedIn : Bool
+   
+    
+    init(isUserLoggedIn : Binding<Bool>){
+        self._isUserLoggedIn = isUserLoggedIn
+    }
 
     
     var body: some View {
@@ -38,7 +45,7 @@ struct CreateProfileScreen: View {
                 Color.white
                 .ignoresSafeArea(edges: .bottom)
             
-            NavigationLink( destination: MainTabContainer(isUserLoggedIn: self.$toHome), isActive: self.$toHome){
+            NavigationLink( destination: MainTabContainer(isUserLoggedIn: self.$isUserLoggedIn), isActive: self.$toHome){
                 EmptyView()
             }
            

@@ -1,25 +1,25 @@
 //
-//  GetReviewsApi.swift
+//  PostReplyOnReviewApi.swift
 //  Review App
 //
-//  Created by Bilal Ahmed on 23/02/2023.
+//  Created by Bilal Ahmed on 02/03/2023.
 //
 
 import Foundation
-import SwiftUI
 
-class GetReviewsApi : ObservableObject{
+
+class PostReplyOnReviewApi : ObservableObject{
     
     @Published var isLoading = false
     @Published var isApiCallDone = false
     @Published var isApiCallSuccessful = false
     @Published var dataRetrivedSuccessfully = false
-    @Published var apiResponse :  GetReviewsResponseModel?
+    @Published var apiResponse :  PostReplyOnReviewResponseModel?
     
     
     
     
-    func getReviews(id : String, reviewList : Binding<[GetReviewsdocsModel]>){
+    func addReply(replyFor : String, reply : String){
         
         self.isLoading = true
         self.isApiCallSuccessful = true
@@ -27,17 +27,22 @@ class GetReviewsApi : ObservableObject{
         self.isApiCallDone = false
         
         //Create url
-        guard let url = URL(string: NetworkConfig.baseUrl + NetworkConfig.getReviews + "?reviewFor=\(id)" ) else {return}
+        guard let url = URL(string: NetworkConfig.baseUrl + NetworkConfig.reply) else {return}
         
         
         let token = AppData().getBearerToken()
         
+        let data : Data = "replyFor=\(replyFor)&reply=\(reply)".data(using: .utf8)!
+
         
         //Create request
         var request = URLRequest(url: url)
-        request.httpMethod = "GET"
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue(NetworkConfig.secretKey, forHTTPHeaderField: "secretKey")
+        request.httpBody = data
+
         
         
         
@@ -59,28 +64,28 @@ class GetReviewsApi : ObservableObject{
             
             
             do{
-                print("Got view Reviews response succesfully.....")
+                print("Got add reply response succesfully.....")
                 DispatchQueue.main.async {
                     self.isApiCallDone = true
                 }
-                let main = try JSONDecoder().decode(GetReviewsResponseModel.self, from: data)
+                let main = try JSONDecoder().decode(PostReplyOnReviewResponseModel.self, from: data)
                 
                 DispatchQueue.main.async {
                     self.apiResponse = main
                     self.isApiCallSuccessful  = true
                     
-                    if(main.message == "OK"){
+                    if(main.message == " Reply Given Successfully "){
                         
-                        if(main.docs != nil){
+//                        if(main.docs != nil){
                             
                             self.dataRetrivedSuccessfully = true
                             
-                            reviewList.wrappedValue.append(contentsOf: self.apiResponse!.docs!)
-                        }
-                        else{
-                            self.dataRetrivedSuccessfully = false
                             
-                        }
+//                        }
+//                        else{
+//                            self.dataRetrivedSuccessfully = false
+//
+//                        }
                         
                         
                     }
@@ -111,4 +116,3 @@ class GetReviewsApi : ObservableObject{
     
     
 }
-

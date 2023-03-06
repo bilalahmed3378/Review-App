@@ -39,9 +39,9 @@ struct EditProfileScreen: View {
     @State var tagLine = ""
     @State var Description = ""
 
-    @State var coverPhoto : Image? = nil
+    @State var coverPhoto : UIImage? = nil
     
-    @State var profilePhoto : Image? = nil
+    @State var profilePhoto : UIImage? = nil
     
     @State var showBottomSheet: Bool = false
 
@@ -174,7 +174,9 @@ struct EditProfileScreen: View {
                                         
                                         
                                         HStack{
-                                            if(profilePicked == false){
+                                            
+                                            if(self.profilePicked == false){
+
                                                 KFImage(URL(string: self.getProfileApi.apiResponse!.docs!.profileImage))
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fill)
@@ -182,7 +184,8 @@ struct EditProfileScreen: View {
                                                     .clipShape(Circle())
                                             }
                                             else{
-                                                profilePhoto?
+                                                
+                                                Image(uiImage: self.profilePhoto!)
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fill)
                                                 .frame(width: 75, height: 75)
@@ -217,7 +220,9 @@ struct EditProfileScreen: View {
                                         self.showBottomSheet = true
                                         self.isProfileImage = false
                                     }, label: {
+                                        
                                         if(coverPicked == false){
+                                            
                                             KFImage(URL(string: self.getProfileApi.apiResponse!.docs!.coverImage))
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fill)
@@ -226,7 +231,8 @@ struct EditProfileScreen: View {
                                                     .padding(.top,20)
                                         }
                                         else{
-                                            coverPhoto?
+                                            
+                                            Image(uiImage: self.coverPhoto!)
                                             .resizable()
                                             .aspectRatio(contentMode: .fill)
                                             .frame(width: UIScreen.screenWidth - 40, height: 200)
@@ -369,15 +375,8 @@ struct EditProfileScreen: View {
                                     else{
                                         Button(action: {
                                             
-                                            if(self.profilePhoto == nil){
-                                                self.toastMessage = "Please select profile image."
-                                                self.showToast = true
-                                            }
-                                            if(self.coverPhoto == nil){
-                                                self.toastMessage = "Please select cover image."
-                                                self.showToast = true
-                                            }
-                                            else if(self.firstName.isEmpty){
+                                           
+                                            if(self.firstName.isEmpty){
                                                 self.toastMessage = "Please enter first name."
                                                 self.showToast = true
                                             }
@@ -398,34 +397,9 @@ struct EditProfileScreen: View {
                                             else{
                                                 
                                                 
-                                                
-                                                self.editProfileDataApi.isLoading = true
-                                                
-                                                
-                                                let size = self.profilePhoto!.asUIImage().getSizeIn(.megabyte)
-                                                
-                                                print("image data size ===> \(size)")
-                                                
-                                                
-                                                if(size > 1){
-                                                    self.toastMessage = "Image must be less then 1 mb"
-                                                    self.showToast = true
-                                                    self.editProfileDataApi.isLoading = false
-                                                }
-                                                else{
                                                     
-                                                    let imageData  = (((self.profilePhoto!.asUIImage()).jpegData(compressionQuality: 1)) ?? Data())
+                                                self.editProfileDataApi.editUserProfileData(firstname: self.firstName, lastname: self.lastName, tagline: self.tagLine, description: self.Description, profileImage: self.profilePhoto, coverImage: self.coverPhoto)
                                                     
-                                                    let imageDataCover  = (((self.coverPhoto!.asUIImage()).jpegData(compressionQuality: 1)) ?? Data())
-                                                    
-                                                    
-                                                    
-                                                    self.editProfileDataApi.editUserProfileData(firstname: self.firstName, lastname: self.lastName, tagline: self.tagLine, description: self.Description, profileImage: imageData, coverImage: imageDataCover)
-                                                    
-                                                }
-                                                
-                                                //                            self.updateProfileApi.updateUserProfile(firstName: self.firstName, lastName: self.lastName, latitude: self.latitude.description, longitude: self.longitude.description, phone: self.phone, biography: self.aboutMe, address: self.address, gender: self.selectedGender.lowercased(), dob: self.dateFormatter.string(from: self.dateOfBirth), age: self.age)
-                                                
                                             }
                                         }, label: {
                                             
@@ -527,18 +501,34 @@ struct EditProfileScreen: View {
             
             ImagePicker(sourceType: .photoLibrary) { image in
                 
-                if(self.isProfileImage){
-                    self.profilePhoto = Image(uiImage: image)
-                    self.profilePicked = true
+                let imageSize = image.getSizeIn(.megabyte)
+                
+                print("image data size ===> \(imageSize)")
+                
+                
+                
+                if(imageSize > 1){
+                    self.toastMessage = "Image must be less then 1 mb"
+                    self.showToast = true
                 }
                 
                 else{
-                    self.coverPhoto = Image(uiImage: image)
-                    self.coverPicked = true
-
-
+                    
+                    
+                    if(self.isProfileImage){
+                        self.profilePhoto = image
+                        self.profilePicked = true
+                    }
+                    
+                    else{
+                        self.coverPhoto = image
+                        self.coverPicked = true
+                        
+                        
+                    }
+                    
                 }
-                     
+                
             }
             
         }

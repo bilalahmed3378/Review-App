@@ -19,6 +19,8 @@ struct LoginScreen: View {
     @State var toastMessage : String = ""
 
     @State var toCreatedProfile : Bool = false
+    
+    @State var toVerifyOTP : Bool = false
 
     
     @State var name  = ""
@@ -44,9 +46,13 @@ struct LoginScreen: View {
                 NavigationLink(destination: MainTabContainer(isUserLoggedIn: self.$isUserLoggedIn), isActive: $isUserLoggedIn){
                     EmptyView()
                 }
+                
+                NavigationLink(destination: SendOTPVerifyEmailScreen(isUserLoggedIn: self.$toVerifyOTP), isActive: $toVerifyOTP){
+                    EmptyView()
+                }
             }
             
-            NavigationLink(destination: CreateProfileScreen(), isActive: self.$toCreatedProfile){
+            NavigationLink(destination: CreateProfileScreen(isUserLoggedIn: self.$toCreatedProfile), isActive: self.$toCreatedProfile){
                 EmptyView()
             }
             
@@ -216,7 +222,7 @@ struct LoginScreen: View {
                                    }
                                    
                                    
-                                   if(self.loginApi.apiResponse!.docs!.profileSetup == true){
+                                   if(self.loginApi.apiResponse!.docs!.profileSetup == true && self.loginApi.apiResponse!.docs!.emailVerified == true){
                                        
                                        AppData().setRemeberMe(rememberMe: self.remmberMe)
                                        AppData().saveUserDetails(user: self.loginApi.apiResponse!.docs!)
@@ -224,6 +230,9 @@ struct LoginScreen: View {
                                        self.isUserLoggedIn = true
                                        
                                        
+                                   }
+                                   else if(self.loginApi.apiResponse!.docs!.profileSetup == false && self.loginApi.apiResponse!.docs!.emailVerified == false){
+                                       self.toVerifyOTP = true
                                    }
                                    
                                    else{
