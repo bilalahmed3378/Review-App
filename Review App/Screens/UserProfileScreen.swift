@@ -22,15 +22,9 @@ struct UserProfileScreen: View {
     
     @State var reviewRating = 0
 
-
-
     @State var showToast : Bool = false
     @State var toastMessage : String = ""
 
-
-
-
-    
     @State var description = ""
     @State var writeReview = ""
 
@@ -323,200 +317,205 @@ struct UserProfileScreen: View {
                                 }
                                 
                                
-                                Button(action: {
-                                    self.showSheet = true
-                                    self.reviewSheet = true
-                                }, label: {
-                                    BlueButton(lable: "Write a review")
-                                        .padding(.top,30)
-                                })
-                                .sheet(isPresented: self.$showSheet){
-                                    if(self.reviewSheet){
-                                        ScrollView(.vertical, showsIndicators: false){
-                                            VStack{
-
-                                                HStack{
-                                                    KFImage(URL(string: self.getUserProfileApi.apiResponse!.docs!.profileImage))
-                                                        .resizable()
-                                                        .aspectRatio(contentMode: .fill)
-                                                        .frame(width: 70, height: 70)
-                                                        .clipShape(Circle())
-
-                                                    VStack(alignment: .leading){
-                                                        HStack{
-                                                            Text("\(self.getUserProfileApi.apiResponse!.docs!.firstname)")
-                                                                .foregroundColor(.black)
-                                                                .font(AppFonts.ceraPro_16)
-
-                                                            Spacer()
-
-                                                            Button(action: {
-                                                                self.showSheet = false
-                                                            }, label: {
-                                                                Image(systemName: "xmark.circle")
-                                                                    .resizable()
-                                                                    .aspectRatio( contentMode: .fit)
-                                                                    .frame(width: 18, height: 18)
-
-                                                            })
-
-                                                        }
-
-                                                        Text("\(self.getUserProfileApi.apiResponse!.docs!.description)")
-                                                            .foregroundColor(AppColors.textColor)
-                                                            .font(AppFonts.ceraPro_14)
-                                                            .padding(.top,2)
-
+                                if(self.getUserProfileApi.apiResponse!.docs!._id != AppData().getUserId()){
+                                    Button(action: {
+                                        self.showSheet = true
+                                        self.reviewSheet = true
+                                    }, label: {
+                                        BlueButton(lable: "Write a review")
+                                            .padding(.top,30)
+                                    })
+                                    .sheet(isPresented: self.$showSheet){
+                                        if(self.reviewSheet){
+                                            ScrollView(.vertical, showsIndicators: false){
+                                                VStack{
                                                     
-
-                                                    }
-                                                    .padding(.leading,3)
-                                                }
-                                                .padding(10)
-                                                .padding(.top,10)
-                                                .background(RoundedRectangle(cornerRadius: 10).fill(.gray.opacity(0.1)))
-
-
-                                                HStack{
-
-                                                    productRatingView(rating:$reviewRating)
-                                                        .padding(.top,20)
-
-                                                }
-                                                .padding(.top,20)
-
-//                                                        Text("Excellent!")
-//                                                            .foregroundColor(.black)
-//                                                            .font(AppFonts.ceraPro_14)
-//                                                            .padding(.top,20)
-
-                                                HStack{
-
-                                                    Text("Review")
-                                                        .foregroundColor(.black)
-                                                        .font(AppFonts.ceraPro_16)
-
-                                                    Spacer()
-                                                }
-                                                .padding(.top,20)
-                                                .padding(.leading,20)
-                                                .padding(.trailing,20)
-
-
-
-                                                TextEditor(text: $writeReview)
-                                                    .foregroundColor(AppColors.textColor)
-                                                    .padding(10)
-                                                    .frame(height: 150)
-                                                    .overlay(
-                                                        RoundedRectangle(cornerRadius: 10)
-                                                            .stroke(AppColors.textColor, lineWidth: 1)
-                                                    )
-                                                    .overlay(
-
-                                                        VStack{
+                                                    HStack{
+                                                        KFImage(URL(string: self.getUserProfileApi.apiResponse!.docs!.profileImage))
+                                                            .resizable()
+                                                            .aspectRatio(contentMode: .fill)
+                                                            .frame(width: 70, height: 70)
+                                                            .clipShape(Circle())
+                                                        
+                                                        VStack(alignment: .leading){
                                                             HStack{
-                                                                if(self.writeReview.isEmpty){
-                                                                    Text("Add Review")
-                                                                        .font(AppFonts.ceraPro_16)
-                                                                        .foregroundColor(AppColors.textColor)
-                                                                }
+                                                                Text("\(self.getUserProfileApi.apiResponse!.docs!.firstname)")
+                                                                    .foregroundColor(.black)
+                                                                    .font(AppFonts.ceraPro_16)
+                                                                
                                                                 Spacer()
+                                                                
+                                                                Button(action: {
+                                                                    self.showSheet = false
+                                                                }, label: {
+                                                                    Image(systemName: "xmark.circle")
+                                                                        .resizable()
+                                                                        .aspectRatio( contentMode: .fit)
+                                                                        .frame(width: 18, height: 18)
+                                                                    
+                                                                })
+                                                                
                                                             }
-                                                            .padding(.top,15)
-                                                            .padding(.leading,10)
-                                                            Spacer()
+                                                            
+                                                            Text("\(self.getUserProfileApi.apiResponse!.docs!.description)")
+                                                                .foregroundColor(AppColors.textColor)
+                                                                .font(AppFonts.ceraPro_14)
+                                                                .padding(.top,2)
+                                                            
+                                                            
+                                                            
                                                         }
-
-                                                    )
+                                                        .padding(.leading,3)
+                                                    }
+                                                    .padding(10)
+                                                    .padding(.top,10)
+                                                    .background(RoundedRectangle(cornerRadius: 10).fill(.gray.opacity(0.1)))
+                                                    
+                                                    
+                                                    HStack{
+                                                        
+                                                        productRatingView(rating:$reviewRating)
+                                                            .padding(.top,20)
+                                                        
+                                                    }
+                                                    .padding(.top,20)
+                                                    
+                                                    //                                                        Text("Excellent!")
+                                                    //                                                            .foregroundColor(.black)
+                                                    //                                                            .font(AppFonts.ceraPro_14)
+                                                    //                                                            .padding(.top,20)
+                                                    
+                                                    HStack{
+                                                        
+                                                        Text("Review")
+                                                            .foregroundColor(.black)
+                                                            .font(AppFonts.ceraPro_16)
+                                                        
+                                                        Spacer()
+                                                    }
+                                                    .padding(.top,20)
                                                     .padding(.leading,20)
                                                     .padding(.trailing,20)
-                                                
-                                                if(self.writeReviewApi.isLoading){
-                                                    ProgressView()
-                                                        .padding(20)
-                                                        .onDisappear{
+                                                    
+                                                    
+                                                    
+                                                    TextEditor(text: $writeReview)
+                                                        .foregroundColor(AppColors.textColor)
+                                                        .padding(10)
+                                                        .frame(height: 150)
+                                                        .overlay(
+                                                            RoundedRectangle(cornerRadius: 10)
+                                                                .stroke(AppColors.textColor, lineWidth: 1)
+                                                        )
+                                                        .overlay(
                                                             
-                                                            if(self.writeReviewApi.isApiCallDone && (!self.writeReviewApi.isApiCallSuccessful)){
-                                                                self.showSheet = false
-                                                                self.toastMessage = "Unable to access internet. Please check your internet connection and try again."
-                                                                self.showToast = true
-                                                            }
-                                                           
-                                                            else if(self.writeReviewApi.isApiCallDone && self.writeReviewApi.isApiCallSuccessful){
-                                                                if(self.writeReviewApi.dataRetrivedSuccessfully){
-                                                                    self.showSheet = false
-                                                                    self.toastMessage = "Review added successfully"
-                                                                    self.showToast = true
-                                                                    self.reviewsList.removeAll()
-                                                                    self.getReviews.getReviews(id: self.getUserProfileApi.apiResponse!.docs!._id, reviewList: self.$reviewsList)
-                                                                    
-                                                                    
+                                                            VStack{
+                                                                HStack{
+                                                                    if(self.writeReview.isEmpty){
+                                                                        Text("Add Review")
+                                                                            .font(AppFonts.ceraPro_16)
+                                                                            .foregroundColor(AppColors.textColor)
+                                                                    }
+                                                                    Spacer()
                                                                 }
-                                                                else if(self.writeReviewApi.isGiven){
-                                                                    self.showSheet = false
-
-                                                                    self.toastMessage = "Review already given"
-                                                                    self.showToast = true
-                                                                }
-                                                                else{
-                                                                    self.showSheet = false
-                                                                    self.toastMessage = "Unable to add review try again."
-                                                                    self.showToast = true
-                                                                }
-                                                              
-                         
-                                                            }
-                                                            else{
-                                                                self.toastMessage = "Unable to add review try again. Plese Try again later"
-                                                                self.showToast = true
+                                                                .padding(.top,15)
+                                                                .padding(.leading,10)
+                                                                Spacer()
                                                             }
                                                             
+                                                        )
+                                                        .padding(.leading,20)
+                                                        .padding(.trailing,20)
+                                                        .onChange(of: self.writeReview) { newValue in
+                                                            self.writeReview = newValue.limit(limit : 500)
                                                         }
                                                     
-                                                }
-
-
-                                                else{
-                                                    Button(action: {
-                                                        if(self.writeReview.isEmpty){
-                                                            self.showToast = true
-                                                            self.toastMessage = "please write review"
-                                                        }
-                                                        else if(self.reviewRating == 0){
-                                                            self.showToast = true
-                                                            self.toastMessage = "please add rating"
-                                                        }
-                                                         else{
-                                                            self.writeReviewApi.addReply(replyFor:self.getUserProfileApi.apiResponse!.docs!._id, ratings: self.reviewRating, message: self.writeReview)
-                                                             
-                                                             self.writeReview = ""
-                                                             self.reviewRating = 0
-                                                        }
+                                                    if(self.writeReviewApi.isLoading){
+                                                        ProgressView()
+                                                            .padding(20)
+                                                            .onDisappear{
+                                                                
+                                                                if(self.writeReviewApi.isApiCallDone && (!self.writeReviewApi.isApiCallSuccessful)){
+                                                                    self.showSheet = false
+                                                                    self.toastMessage = "Unable to access internet. Please check your internet connection and try again."
+                                                                    self.showToast = true
+                                                                }
+                                                                
+                                                                else if(self.writeReviewApi.isApiCallDone && self.writeReviewApi.isApiCallSuccessful){
+                                                                    if(self.writeReviewApi.dataRetrivedSuccessfully){
+                                                                        self.showSheet = false
+                                                                        self.toastMessage = "Review added successfully"
+                                                                        self.showToast = true
+                                                                        self.reviewsList.removeAll()
+                                                                        self.getReviews.getReviews(id: self.getUserProfileApi.apiResponse!.docs!._id, reviewList: self.$reviewsList)
+                                                                        
+                                                                        
+                                                                    }
+                                                                    else if(self.writeReviewApi.isGiven){
+                                                                        self.showSheet = false
+                                                                        
+                                                                        self.toastMessage = "Review already given"
+                                                                        self.showToast = true
+                                                                    }
+                                                                    else{
+                                                                        self.showSheet = false
+                                                                        self.toastMessage = "Unable to add review try again."
+                                                                        self.showToast = true
+                                                                    }
+                                                                    
+                                                                    
+                                                                }
+                                                                else{
+                                                                    self.toastMessage = "Unable to add review try again. Plese Try again later"
+                                                                    self.showToast = true
+                                                                }
+                                                                
+                                                            }
                                                         
-                                                       
-                                                    }, label: {
-                                                        BlueButton(lable: "SUBMIT")
-                                                            .padding(.top,20)
-                                                            .padding(.leading,20)
-                                                            .padding(.trailing,20)
-                                                    })
+                                                    }
+                                                    
+                                                    
+                                                    else{
+                                                        Button(action: {
+                                                            if(self.writeReview.isEmpty){
+                                                                self.showToast = true
+                                                                self.toastMessage = "please write review"
+                                                            }
+                                                            else if(self.reviewRating == 0){
+                                                                self.showToast = true
+                                                                self.toastMessage = "please add rating"
+                                                            }
+                                                            else{
+                                                                self.writeReviewApi.addReply(replyFor:self.getUserProfileApi.apiResponse!.docs!._id, ratings: self.reviewRating, message: self.writeReview)
+                                                                
+                                                                self.writeReview = ""
+                                                                self.reviewRating = 0
+                                                            }
+                                                            
+                                                            
+                                                        }, label: {
+                                                            BlueButton(lable: "SUBMIT")
+                                                                .padding(.top,20)
+                                                                .padding(.leading,20)
+                                                                .padding(.trailing,20)
+                                                        })
+                                                    }
+                                                    
+                                                    
+                                                    if(showToast){
+                                                        Toast(isShowing: self.$showToast, message: self.toastMessage)
+                                                    }
+                                                    
+                                                    
+                                                    
+                                                    Spacer()
+                                                    
                                                 }
-                                                
-                                                
-                                                if(showToast){
-                                                    Toast(isShowing: self.$showToast, message: self.toastMessage)
-                                                }
-                                                
-                                              
-
-                                                Spacer()
-
                                             }
                                         }
+                                        
+                                        
                                     }
-                                  
-
                                 }
                                
                             }
@@ -644,14 +643,33 @@ struct ReviewCards : View{
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 40, height: 40)
                     .clipShape(Circle())
+                    .blur(radius: 2)
+
                 
                 VStack(alignment: .leading){
                     
                     HStack{
-                        Text("\(self.ReviewList.reviewerId!.firstname) \(self.ReviewList.reviewerId!.lastname)")
-                            .foregroundColor(.black)
-                            .font(AppFonts.ceraPro_16)
-                            .fontWeight(.bold)
+                        let halfIndex = self.ReviewList.reviewerId!.firstname.index(self.ReviewList.reviewerId!.firstname.startIndex, offsetBy: self.ReviewList.reviewerId!.firstname.count / 2)
+                               let firstHalf = String(self.ReviewList.reviewerId!.firstname[..<halfIndex])
+//                                                                   let secondHalf = String(self.getReviews.apiResponse!.docs![index].reviewFor!.firstname[halfIndex...])
+                        
+                        let halfIndexLast = self.ReviewList.reviewerId!.lastname.index(self.ReviewList.reviewerId!.lastname.startIndex, offsetBy: self.ReviewList.reviewerId!.lastname.count / 2)
+//                                                                   let firstHalfLast = String(self.getReviews.apiResponse!.docs![index].reviewFor!.lastname[..<halfIndex])
+                               let secondHalfLast = String(self.ReviewList.reviewerId!.lastname[halfIndexLast...])
+                        
+                        HStack(spacing: 0) {
+                                   Text(firstHalf)
+//                                                                       Text(secondHalf)
+//                                                                           .hidden()
+                            
+                            Text("*******")
+                            
+//                                                                Text(firstHalfLast)
+//                                                                    .hidden()
+                            Text(secondHalfLast)
+                                
+                            
+                               }
                         
                         Spacer()
                         
@@ -668,8 +686,38 @@ struct ReviewCards : View{
                         
                     }
                     
-                    RatingView(rating: Double(self.ReviewList.ratings))
-                        .padding(.top,3)
+                    HStack{
+                        RatingView(rating: Double(self.ReviewList.ratings))
+                            .padding(.top,3)
+                        
+                        Spacer()
+                        
+                        
+                        Button(action: {
+                            self.showSheet = true
+                            self.reviewSheet = false
+                        }, label: {
+                            Image(systemName: "arrowshape.turn.up.left.fill")
+                                .resizable()
+                                .aspectRatio( contentMode: .fit)
+                                .frame(width: 16, height: 16)
+                                .foregroundColor(.blue)
+                            
+                            Text("Reply")
+                                .foregroundColor(.blue)
+                                .font(AppFonts.ceraPro_14)
+                        })
+                        .sheet(isPresented: self.$showSheet){
+                            
+                            if(self.reviewSheet == false){
+                                ReplySheet(replyId: ReviewList._id)
+                            }
+                            
+                        }
+                        
+                        
+                        
+                    }
                     
                  
                         Text("\(self.ReviewList.message)")
@@ -722,6 +770,7 @@ struct ReviewCards : View{
                                         .foregroundColor(.red)
                                         .font(AppFonts.ceraPro_14)
                                         .padding(.trailing,5)
+                                        .padding(.top,3)
                                 })
                             }
                         }
@@ -737,55 +786,34 @@ struct ReviewCards : View{
 //                        }
 //
                         
+//                        Spacer()
+//
+//
+//                        Image(systemName: "hand.thumbsdown.fill")
+//                            .resizable()
+//                            .aspectRatio( contentMode: .fit)
+//                            .frame(width: 16, height: 16)
+//                            .foregroundColor(.red)
+//
+//                        Text("6")
+//                            .foregroundColor(.red)
+//                            .font(AppFonts.ceraPro_14)
+//
+//                        Spacer()
+//
+//                        Image(systemName: "hand.thumbsup.fill")
+//                            .resizable()
+//                            .aspectRatio( contentMode: .fit)
+//                            .frame(width: 16, height: 16)
+//                            .foregroundColor(.blue)
+//
+//                        Text("6")
+//                            .foregroundColor(.blue)
+//                            .font(AppFonts.ceraPro_14)
+                        
                         Spacer()
                         
-                        
-                        Image(systemName: "hand.thumbsdown.fill")
-                            .resizable()
-                            .aspectRatio( contentMode: .fit)
-                            .frame(width: 16, height: 16)
-                            .foregroundColor(.red)
-                        
-                        Text("6")
-                            .foregroundColor(.red)
-                            .font(AppFonts.ceraPro_14)
-                        
-                        Spacer()
-                        
-                        Image(systemName: "hand.thumbsup.fill")
-                            .resizable()
-                            .aspectRatio( contentMode: .fit)
-                            .frame(width: 16, height: 16)
-                            .foregroundColor(.blue)
-                        
-                        Text("6")
-                            .foregroundColor(.blue)
-                            .font(AppFonts.ceraPro_14)
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            self.showSheet = true
-                            self.reviewSheet = false
-                        }, label: {
-                            Image(systemName: "arrowshape.turn.up.left.fill")
-                                .resizable()
-                                .aspectRatio( contentMode: .fit)
-                                .frame(width: 16, height: 16)
-                                .foregroundColor(.blue)
-                            
-                            Text("Reply")
-                                .foregroundColor(.blue)
-                                .font(AppFonts.ceraPro_14)
-                        })
-                        .sheet(isPresented: self.$showSheet){
-                            
-                            if(self.reviewSheet == false){
-                                ReplySheet(replyId: ReviewList._id)
-                            }
-                            
-                        }
-                        
+                      
                         
                         
                         
@@ -819,7 +847,8 @@ struct ReplySheet : View{
     @State var toastMessage : String = ""
 
 
-    
+    @State var newName = ""
+
 
     
     let replyId : String
@@ -903,10 +932,27 @@ struct ReplySheet : View{
                                 VStack(alignment: .leading){
                                     
                                     HStack{
-                                        Text("\(self.getReplyOnRating.apiResponse!.docs!.reviewerId!.firstname) \(self.getReplyOnRating.apiResponse!.docs!.reviewerId!.lastname)")
-                                            .foregroundColor(.black)
-                                            .font(AppFonts.ceraPro_16)
-                                            .fontWeight(.bold)
+                                        let halfIndex = self.getReplyOnRating.apiResponse!.docs!.reviewerId!.firstname.index(self.getReplyOnRating.apiResponse!.docs!.reviewerId!.firstname.startIndex, offsetBy: self.getReplyOnRating.apiResponse!.docs!.reviewerId!.firstname.count / 2)
+                                               let firstHalf = String(self.getReplyOnRating.apiResponse!.docs!.reviewerId!.firstname[..<halfIndex])
+                //                                                                   let secondHalf = String(self.getReviews.apiResponse!.docs![index].reviewFor!.firstname[halfIndex...])
+                                        
+                                        let halfIndexLast = self.getReplyOnRating.apiResponse!.docs!.reviewerId!.lastname.index(self.getReplyOnRating.apiResponse!.docs!.reviewerId!.lastname.startIndex, offsetBy: self.getReplyOnRating.apiResponse!.docs!.reviewerId!.lastname.count / 2)
+                //                                                                   let firstHalfLast = String(self.getReviews.apiResponse!.docs![index].reviewFor!.lastname[..<halfIndex])
+                                               let secondHalfLast = String(self.getReplyOnRating.apiResponse!.docs!.reviewerId!.lastname[halfIndexLast...])
+                                        
+                                        HStack(spacing: 0) {
+                                                   Text(firstHalf)
+                //                                                                       Text(secondHalf)
+                //                                                                           .hidden()
+                                            
+                                            Text("*******")
+                                            
+                //                                                                Text(firstHalfLast)
+                //                                                                    .hidden()
+                                            Text(secondHalfLast)
+                                                
+                                            
+                                               }
                                         
                                         Spacer()
                                         
@@ -989,7 +1035,7 @@ struct ReplySheet : View{
                             
                             HStack{
                                 
-                                Text("Review (1045)")
+                                Text("Replies")
                                     .foregroundColor(.black)
                                     .font(AppFonts.ceraPro_16)
                                     .fontWeight(.bold)
@@ -1004,7 +1050,7 @@ struct ReplySheet : View{
                             LazyVStack{
                                 ForEach(self.getReplyOnRating.apiResponse!.docs!.replyHistory.indices, id: \.self){index in
                                     
-                                    ReplyView(replyModel: self.getReplyOnRating.apiResponse!.docs!.replyHistory[index])
+                                    ReplyView(replyModel: self.getReplyOnRating.apiResponse!.docs!.replyHistory[index] )
                                     
                                     
                                 }
@@ -1033,6 +1079,9 @@ struct ReplySheet : View{
                                         }
                                         
                                     )
+                                    .onChange(of: self.description) { newValue in
+                                        self.description = newValue.limit(limit : 500)
+                                    }
                                 
                                 
                                 if(self.postReplyOnRating.isLoading){
@@ -1174,6 +1223,7 @@ struct ReplyView : View{
     
     let replyModel : String
     
+    
     var body: some View{
         
 //        HStack{
@@ -1186,6 +1236,7 @@ struct ReplyView : View{
 //        .padding(.top,10)
 //
         
+      
         HStack{
             Text(replyModel)
                 .font(AppFonts.ceraPro_14)
@@ -1194,6 +1245,7 @@ struct ReplyView : View{
         }
             .frame(width: UIScreen.screenWidth - 40)
             .background(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.textColor))
+            .padding(.top,1)
         
         Divider()
     }

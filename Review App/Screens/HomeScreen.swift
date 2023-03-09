@@ -22,24 +22,7 @@ struct HomeScreen: View {
             
            
             VStack{
-                TextField("Search user name here", text: self.$search)
-                    .foregroundColor(AppColors.textColor)
-                    .font(AppFonts.ceraPro_16)
-                    .padding(15)
-                    .background(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.textColor))
-                    .overlay(
-                        HStack{
-                            Spacer()
-                            Image(systemName: "magnifyingglass")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(.black)
-                                .padding(.trailing,20)
-                        }
-                    )
-                    .padding(.leading,20)
-                    .padding(.trailing,20)
-                    .padding(.top,10)
+              
                 
                 if(self.getAllUsers.isLoading){
 
@@ -102,17 +85,39 @@ struct HomeScreen: View {
                     
                     if(self.getAllUsers.dataRetrivedSuccessfully){
                         
+                        TextField("Search user name here", text: self.$search)
+                            .foregroundColor(AppColors.textColor)
+                            .font(AppFonts.ceraPro_16)
+                            .padding(15)
+                            .background(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.textColor))
+                            .overlay(
+                                HStack{
+                                    Spacer()
+                                    Image(systemName: "magnifyingglass")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(.black)
+                                        .padding(.trailing,20)
+                                }
+                            )
+                            .padding(.top,10)
+                            .padding(.leading,20)
+                            .padding(.trailing,20)
+                        
+                        
                         ScrollView(.vertical, showsIndicators: false){
-                            LazyVStack{
-                                ForEach(self.getAllUsers.apiResponse!.docs.indices, id: \.self){index in
-                                    
-                                  
-                                    AllUsers(userList: self.getAllUsers.apiResponse!.docs[index])
+                            VStack{
+                                
+                               
+                                
+                                LazyVStack{
+                                    ForEach(self.getAllUsers.apiResponse!.docs.indices, id: \.self){index in
                                         
-                                  
-                                  
-                                    
-                                   
+                                        
+                                        AllUsers(userList: self.getAllUsers.apiResponse!.docs[index])
+                                            .padding(.top,1)
+                                        
+                                    }
                                 }
                                 
                             }
@@ -227,56 +232,12 @@ struct AllUsers : View{
                         .font(AppFonts.ceraPro_14)
                         .padding(.top,2)
                     
-                    HStack{
-                        Spacer()
-                        
-                        HStack{
-                            
-                            Image(systemName: "star.fill")
-                                .resizable()
-                                .aspectRatio( contentMode: .fit)
-                                .frame(width: 10, height: 10)
-                                .foregroundColor(.yellow)
-                                .padding(.trailing,2)
-                            
-                            Image(systemName: "star.fill")
-                                .resizable()
-                                .aspectRatio( contentMode: .fit)
-                                .frame(width: 10, height: 10)
-                                .foregroundColor(.yellow)
-                                .padding(.trailing,2)
-                            
-                            Image(systemName: "star.fill")
-                                .resizable()
-                                .aspectRatio( contentMode: .fit)
-                                .frame(width: 10, height: 10)
-                                .foregroundColor(.yellow)
-                                .padding(.trailing,2)
-                            
-                            Image(systemName: "star.fill")
-                                .resizable()
-                                .aspectRatio( contentMode: .fit)
-                                .frame(width: 10, height: 10)
-                                .foregroundColor(.yellow)
-                                .padding(.trailing,2)
-                            
-                            Image(systemName: "star.fill")
-                                .resizable()
-                                .aspectRatio( contentMode: .fit)
-                                .frame(width: 10, height: 10)
-                                .foregroundColor(.yellow)
-                                .padding(.trailing,2)
-                            
-                          
-                        }
-                        
-                        Text("(1039)")
-                            .foregroundColor(.black)
-                            .font(AppFonts.ceraPro_14)
-                    }
+               
                     
                 }
                 .padding(.leading,3)
+                
+                Spacer()
             }
             .padding(10)
             .background(RoundedRectangle(cornerRadius: 10).fill(.gray.opacity(0.1)))

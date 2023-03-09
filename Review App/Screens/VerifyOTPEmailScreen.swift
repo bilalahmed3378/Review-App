@@ -15,6 +15,9 @@ struct VerifyOTPEmailScreen : View {
     @StateObject var viewModel = ViewOTPModel()
     
     @StateObject var verifyOTP = VerifyOTPEmailApi()
+    
+    @StateObject var sendResetPasswordOTPApi : SendOTPVerifyEmailApi = SendOTPVerifyEmailApi()
+
 
     @State var isFocused = false
     
@@ -69,7 +72,7 @@ struct VerifyOTPEmailScreen : View {
                 .padding(.top,30)
                
                 HStack{
-                    Text("We have sent you an OTP with 05 digits, please check your email and confirm it’s you.")
+                    Text("We have sent you an OTP with 06 digits, please check your email and confirm it’s you.")
                         .foregroundColor(.black)
                         .font(AppFonts.ceraPro_16)
                     Spacer()
@@ -104,6 +107,7 @@ struct VerifyOTPEmailScreen : View {
                             .foregroundColor(.clear)
                             .accentColor(.clear)
                             .background(Color.clear)
+                            .keyboardType(.numberPad)
                             .onChange(of: self.viewModel.otpField) { newValue in
                                 self.viewModel.otpField = newValue.limit(limit : 6)
                             }
@@ -119,9 +123,49 @@ struct VerifyOTPEmailScreen : View {
                 
                 HStack{
                     Spacer()
-                    Text("Resend")
-                        .foregroundColor(AppColors.appPrimaryColor)
-                        .font(AppFonts.ceraPro_16)
+                    if(self.sendResetPasswordOTPApi.isLoading){
+                        ProgressView()
+                            .padding(20)
+                            .onDisappear{
+                                
+                                    if(self.sendResetPasswordOTPApi.isApiCallDone && self.sendResetPasswordOTPApi.isApiCallSuccessful){
+                                        
+                                        if(self.sendResetPasswordOTPApi.dataRetrivedSuccessfully){
+                                            
+                                            self.toastMessage = "OTP Resend successfully"
+                                            self.showToast = true
+                                           
+                                        }
+                                        else{
+                                            self.toastMessage = "Unable to send OTP"
+                                            self.showToast = true
+                                        }
+                                        
+                                    }
+                                    else if(self.sendResetPasswordOTPApi.isApiCallDone && (!self.sendResetPasswordOTPApi.isApiCallSuccessful)){
+                                        self.toastMessage = "Unable to access internet. Please check you internet connection and try again."
+                                        self.showToast = true
+                                    }
+                                
+                            }
+                    }
+
+                    else{
+                        Button(action: {
+                            
+                          
+                                self.sendResetPasswordOTPApi.sendOTP()
+                            
+                            
+                        }, label: {
+                            
+                            Text("Resend")
+                                .foregroundColor(AppColors.appPrimaryColor)
+                                .font(AppFonts.ceraPro_16)
+                            
+                        })
+                    }
+                   
                 }
                 .padding(.top,20)
               

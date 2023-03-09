@@ -20,11 +20,11 @@ struct ForgotPasswordScreen: View {
 
     @State var passwordConfirm  = ""
     @State var password  = ""
-    @State var showPassword : Bool = true
-    @State var showConfirmPassword : Bool = true
+    @State var showPassword : Bool = false
+    @State var showConfirmPassword : Bool = false
     
 
-    @State var toHome : Bool = true
+    @State var toHome : Bool = false
 
     
     
@@ -211,7 +211,7 @@ struct ForgotPasswordScreen: View {
                                     self.toastMessage = "Password Updated"
                                     self.showToast = true
                                     
-                                    self.toHome = false
+                                    self.toHome = true
                                 }
                                 else{
                                     self.toastMessage = "Password could not be updated"

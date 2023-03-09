@@ -68,7 +68,7 @@ struct ForgotPasswordEmailScreen: View {
                 .padding(.top,20)
                
                 HStack{
-                    Text("Reset and confirm ")
+                    Text("Enter your email and confirm ")
                         .foregroundColor(.black)
                         .font(AppFonts.ceraPro_16)
                     Spacer()
@@ -93,6 +93,10 @@ struct ForgotPasswordEmailScreen: View {
                             TextField("at least 8 characters", text: self.$email)
                                 .padding(15)
                                 .background(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.textColor))
+                                .textInputAutocapitalization(.never)
+                                .autocapitalization(.none)
+
+
                                 
                       
                        

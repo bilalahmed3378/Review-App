@@ -114,9 +114,11 @@ struct VerifyOTPScreen: View {
                             .foregroundColor(.clear)
                             .accentColor(.clear)
                             .background(Color.clear)
+                            .keyboardType(.numberPad)
                             .onChange(of: self.viewModel.otpField) { newValue in
                                 self.viewModel.otpField = newValue.limit(limit : 6)
                             }
+                           
                     }
                     .padding(.top)
                     .padding(.bottom)

@@ -11,7 +11,9 @@ struct AppImages {
     
     static let profileCoverPic = "profileCoverPic"
     static let profilePic = "profilePic"
+    static let logoApp = "logoApp"
 
+    
     
     
    

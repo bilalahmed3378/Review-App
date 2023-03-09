@@ -227,12 +227,14 @@ class AppData {
         UserDefaults.standard.removeObject(forKey: Constants.userId)
         UserDefaults.standard.removeObject(forKey: Constants.firstName)
         UserDefaults.standard.removeObject(forKey: Constants.lastName)
-//        UserDefaults.standard.removeObject(forKey: Constants.userEmail)
+        UserDefaults.standard.removeObject(forKey: Constants.userEmail)
         UserDefaults.standard.removeObject(forKey: Constants.userImage)
         UserDefaults.standard.removeObject(forKey: Constants.userPhoneNumber)
         UserDefaults.standard.removeObject(forKey: Constants.userStore)
         UserDefaults.standard.removeObject(forKey: Constants.emailVerfied)
         UserDefaults.standard.removeObject(forKey: Constants.isProfileSetup)
+        UserDefaults.standard.removeObject(forKey: Constants.userPassword)
+
     }
     
     func saveUserDetails(user : LoginDocsModel){

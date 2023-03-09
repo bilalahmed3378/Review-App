@@ -73,7 +73,7 @@ struct CreateProfileScreen: View {
                                 
                                 Spacer()
                             }
-                            .padding(.top,5)
+                            .padding(.top,10)
                             
                             
                             HStack{
@@ -154,6 +154,9 @@ struct CreateProfileScreen: View {
                             .foregroundColor(AppColors.textColor)
                             .padding(15)
                             .background(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.textColor))
+                            .onChange(of: self.firstName) { newValue in
+                                self.firstName = newValue.limit(limit : 30)
+                            }
                     
                     HStack{
                         Text("Last Name")
@@ -171,6 +174,9 @@ struct CreateProfileScreen: View {
                         .foregroundColor(AppColors.textColor)
                         .padding(15)
                         .background(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.textColor))
+                        .onChange(of: self.lastName) { newValue in
+                            self.lastName = newValue.limit(limit : 30)
+                        }
                     
                         
                         
@@ -190,6 +196,9 @@ struct CreateProfileScreen: View {
                             .foregroundColor(AppColors.textColor)
                             .padding(15)
                             .background(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.textColor))
+                            .onChange(of: self.tagLine) { newValue in
+                                self.tagLine = newValue.limit(limit : 100)
+                            }
                         
                         
                     Group{
@@ -233,6 +242,9 @@ struct CreateProfileScreen: View {
                                     }
                                     
                                 )
+                                .onChange(of: self.Description) { newValue in
+                                    self.Description = newValue.limit(limit : 300)
+                                }
                         }
                     }
                     
@@ -252,6 +264,9 @@ struct CreateProfileScreen: View {
                                 }
                                 else if(self.addProfileDataApi.isApiCallDone && self.addProfileDataApi.isApiCallSuccessful  && self.addProfileDataApi.addedSuccessful){
                                     AppData().profileSetup()
+                                    AppData().setRemeberMe(rememberMe: true)
+
+
                                     self.toastMessage = "Profile Created successfully"
                                     self.showToast = true
                                     
@@ -306,16 +321,16 @@ struct CreateProfileScreen: View {
                                 print("image data size ===> \(size)")
 
                                 
-                                if(size > 1){
-                                    self.toastMessage = "Image must be less then 1 mb"
+                                if(size > 5){
+                                    self.toastMessage = "Image must be less then 5 mb"
                                     self.showToast = true
                                     self.addProfileDataApi.isLoading = false
                                 }
                                 else{
                                     
-                                    let imageData  = (((self.profilePhoto!.asUIImage()).jpegData(compressionQuality: 1)) ?? Data())
+                                    let imageData  = (((self.profilePhoto!.asUIImage()).jpegData(compressionQuality: 5)) ?? Data())
                                     
-                                    let imageDataCover  = (((self.coverPhoto!.asUIImage()).jpegData(compressionQuality: 1)) ?? Data())
+                                    let imageDataCover  = (((self.coverPhoto!.asUIImage()).jpegData(compressionQuality: 5)) ?? Data())
 
                                     
                                     

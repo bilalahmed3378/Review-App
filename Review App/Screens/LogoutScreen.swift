@@ -52,14 +52,13 @@ struct LogoutScreen: View {
                 
                 
                 
-                Image(uiImage: UIImage(named: AppImages.profileCoverPic)!)
-                    .resizable()
-                    .aspectRatio( contentMode: .fit)
-                    .frame(width: 200, height: 200)
+//                Image(uiImage: UIImage(named: AppImages.profileCoverPic)!)
+//                    .resizable()
+//                    .aspectRatio( contentMode: .fit)
+//                    .frame(width: 200, height: 200)
                 
             
-                Spacer()
-                    .frame( height: 50)
+              
                 
                 
                 Text("You are going to logout from the app. You \nhave to Login again to use this app.")
@@ -75,7 +74,6 @@ struct LogoutScreen: View {
                     
                     
                     AppData().logoutTheUser()
-                    
                     
                     
                     self.isUserLoggedIn = false

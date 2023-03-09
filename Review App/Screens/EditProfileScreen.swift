@@ -72,7 +72,7 @@ struct EditProfileScreen: View {
                     
                     Spacer()
                 }
-                .padding(.top,5)
+                .padding(.top,10)
                 .padding(.leading,20)
                 
                 
@@ -263,6 +263,9 @@ struct EditProfileScreen: View {
                                             .foregroundColor(AppColors.textColor)
                                             .padding(15)
                                             .background(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.textColor))
+                                            .onChange(of: self.firstName) { newValue in
+                                                self.firstName = newValue.limit(limit : 30)
+                                            }
                                         
                                         
                                         HStack{
@@ -281,6 +284,9 @@ struct EditProfileScreen: View {
                                             .foregroundColor(AppColors.textColor)
                                             .padding(15)
                                             .background(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.textColor))
+                                            .onChange(of: self.lastName) { newValue in
+                                                self.lastName = newValue.limit(limit : 30)
+                                            }
                                     }
                                     
                                     HStack{
@@ -299,6 +305,9 @@ struct EditProfileScreen: View {
                                         .foregroundColor(AppColors.textColor)
                                         .padding(15)
                                         .background(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.textColor))
+                                        .onChange(of: self.tagLine) { newValue in
+                                            self.tagLine = newValue.limit(limit : 100)
+                                        }
                                     
                                     
                                     HStack{
@@ -340,6 +349,9 @@ struct EditProfileScreen: View {
                                                 }
                                                 
                                             )
+                                            .onChange(of: self.Description) { newValue in
+                                                self.Description = newValue.limit(limit : 300)
+                                            }
                                     }
                                     
                                     
@@ -507,8 +519,8 @@ struct EditProfileScreen: View {
                 
                 
                 
-                if(imageSize > 1){
-                    self.toastMessage = "Image must be less then 1 mb"
+                if(imageSize > 5){
+                    self.toastMessage = "Image must be less then 5 mb"
                     self.showToast = true
                 }
                 
