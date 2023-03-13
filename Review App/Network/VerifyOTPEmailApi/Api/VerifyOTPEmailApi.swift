@@ -41,6 +41,7 @@ class VerifyOTPEmailApi : ObservableObject{
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue(NetworkConfig.secretKey, forHTTPHeaderField: "secretKey")
+       
         
         
         

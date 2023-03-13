@@ -42,6 +42,8 @@ class NewPasswordApi : ObservableObject{
         request.httpMethod = "PATCH"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue(NetworkConfig.secretKey, forHTTPHeaderField: "secretKey")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
         request.httpBody = data
 
         

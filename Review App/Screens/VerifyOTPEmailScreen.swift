@@ -27,6 +27,12 @@ struct VerifyOTPEmailScreen : View {
     @State var toProfileSeetup : Bool = false
 
     
+    let buttons = [
+           ["1", "2", "3"],
+           ["4", "5", "6"],
+           ["7", "8", "9"],
+           ["", "0", "<"]
+       ]
 
     let textBoxWidth = UIScreen.main.bounds.width / 8
     let textBoxHeight = UIScreen.main.bounds.width / 8
@@ -259,6 +265,22 @@ struct VerifyOTPEmailScreen : View {
                     
                 }
                
+                ForEach(buttons, id: \.self) { row in
+                               HStack {
+                                   ForEach(row, id: \.self) { button in
+                                       Button(action: {
+                                           self.buttonTapped(button: button)
+                                       }, label: {
+                                           Text(button)
+                                               .font(.title)
+                                       })
+                                       .frame(width: 80, height: 80)
+                                       .background(Color.gray.opacity(0.2))
+                                       .cornerRadius(8)
+                                   }
+                               }
+                               .padding(.top,20)
+                           }
                 
                 Spacer()
             }
@@ -290,6 +312,15 @@ struct VerifyOTPEmailScreen : View {
             })
             .padding(paddingOfBox)
     }
+    
+    func buttonTapped(button: String) {
+           switch button {
+           case "<":
+               viewModel.otpField = String(viewModel.otpField.dropLast())
+           default:
+               viewModel.otpField += button
+           }
+       }
 }
 
 

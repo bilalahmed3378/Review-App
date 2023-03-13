@@ -14,6 +14,7 @@ struct HomeScreen: View {
     
     @State var usersList: [GetAllUsersDocsModel] = []
     
+    @State var isFirstLoad : Bool = false
 
 
     var body: some View {
@@ -192,7 +193,10 @@ struct HomeScreen: View {
             }
         }
         .onAppear{
-            self.getAllUsers.getAllUsers()
+            if(isFirstLoad == false){
+                self.getAllUsers.getAllUsers()
+                self.isFirstLoad = true
+            }
         }
     }
     

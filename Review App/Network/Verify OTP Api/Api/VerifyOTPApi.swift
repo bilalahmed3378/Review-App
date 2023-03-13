@@ -80,9 +80,9 @@ class VerifyOTPApi : ObservableObject{
                             
                             return }
                         
-                        if (!(response.value(forHTTPHeaderField: "bearer")!).isEmpty){
+                        if (!(response.value(forHTTPHeaderField: "Bearer")!).isEmpty){
                             
-                            AppData().saveBearerToken(bearerToken: response.value(forHTTPHeaderField: "bearer")!)
+                            AppData().saveBearerToken(bearerToken: response.value(forHTTPHeaderField: "Bearer")!)
                                                         
                         }
 

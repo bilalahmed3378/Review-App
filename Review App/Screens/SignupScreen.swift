@@ -250,7 +250,8 @@ struct SignupScreen: View {
                 .padding(.trailing,20)
                 .padding(.top,10)
                 .padding(.bottom,10)
-            }
+                }
+                .padding(.top,10)
             
             if(showToast){
                 Toast(isShowing: self.$showToast, message: self.toastMessage)
